@@ -1,50 +1,545 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Simple Calculator</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sizwe Sibiya — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #171314;
+    --paper: #FBF3E7;
+    --gold: #E8A83A;
+    --plum: #7A2E4D;
+    --coral: #E8542E;
+    --line: rgba(23,19,20,0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(23,19,20,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(251,243,231,0.1);
+  }
+  nav .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+  .nav-mark {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(251,243,231,0.65);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* --- EQ BARS (signature motif) --- */
+  .eq {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 16px;
+  }
+  .eq span {
+    width: 3px;
+    background: var(--gold);
+    animation: bounce 1.2s ease-in-out infinite;
+  }
+  .eq span:nth-child(1){ height: 40%; animation-delay: -0.9s; }
+  .eq span:nth-child(2){ height: 100%; animation-delay: -0.6s; }
+  .eq span:nth-child(3){ height: 65%; animation-delay: -0.3s; }
+  .eq span:nth-child(4){ height: 85%; animation-delay: -1.1s; }
+  @keyframes bounce {
+    0%, 100% { transform: scaleY(0.35); }
+    50% { transform: scaleY(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .eq span { animation: none; transform: scaleY(0.7); }
+  }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-top: 64px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; right: -12%;
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, var(--plum) 0%, transparent 70%);
+    opacity: 0.55;
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .eyebrow .eq span { background: var(--coral); }
+
+  h1.name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(52px, 10vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--paper);
+  }
+  h1.name .accent { color: var(--gold); }
+
+  .role-line {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(16px, 2.4vw, 22px);
+    font-weight: 500;
+    color: rgba(251,243,231,0.75);
+    margin-top: 20px;
+    max-width: 560px;
+  }
+  .role-line strong { color: var(--paper); font-weight: 700; }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    padding: 7px 14px;
+    border: 1px solid rgba(251,243,231,0.25);
+    border-radius: 100px;
+    color: rgba(251,243,231,0.8);
+  }
+
+  .hero-cta {
+    margin-top: 44px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 14px 26px;
+    border-radius: 100px;
+    transition: transform .15s ease, background .15s ease;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #f2b64f; }
+  .btn-ghost {
+    border: 1px solid rgba(251,243,231,0.3);
+    color: var(--paper);
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* --- SECTION SHARED --- */
+  section { padding: 120px 0; position: relative; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
+  h2.section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 48px;
+    max-width: 720px;
+  }
+
+  /* --- ABOUT --- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-grid p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(251,243,231,0.82);
+    margin-bottom: 20px;
+  }
+  .about-side {
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+  .about-side .stat {
+    margin-bottom: 28px;
+  }
+  .about-side .stat .n {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    display: block;
+  }
+  .about-side .stat .l {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(251,243,231,0.6);
+  }
+
+  /* --- STACK --- */
+  .stack-list { display: flex; flex-direction: column; gap: 0; }
+  .stack-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 60px;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(251,243,231,0.1);
+  }
+  .stack-row .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--paper);
+  }
+  .stack-row .meter {
+    height: 8px;
+    background: rgba(251,243,231,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .stack-row .meter div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--coral), var(--gold));
+    border-radius: 4px;
+  }
+  .stack-row .pct {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    text-align: right;
+    color: rgba(251,243,231,0.55);
+  }
+
+  /* --- PROJECTS --- */
+  .project-card {
+    border: 1px solid rgba(251,243,231,0.14);
+    border-radius: 20px;
+    padding: 40px;
+    background: linear-gradient(160deg, rgba(122,46,77,0.25), rgba(23,19,20,0));
+    margin-bottom: 24px;
+  }
+  .project-card .ptag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .project-card h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .project-card p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(251,243,231,0.75);
+    max-width: 560px;
+    margin-bottom: 20px;
+  }
+  .project-card .plink {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--coral);
+    border-bottom: 1px solid var(--coral);
+    padding-bottom: 2px;
+  }
+  .project-card.dim {
+    opacity: 0.55;
+    background: transparent;
+  }
+  .project-card.dim h3 { font-size: 22px; }
+
+  /* --- CONTACT --- */
+  .contact-section h2.section-title { margin-bottom: 24px; }
+  .contact-intro {
+    font-size: 18px;
+    color: rgba(251,243,231,0.8);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border: 1px solid rgba(251,243,231,0.14);
+    border-radius: 14px;
+    transition: border-color .2s, transform .2s;
+  }
+  .contact-item:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .contact-item .plat {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(251,243,231,0.9);
+  }
+  .contact-item .arrow { color: var(--gold); font-family: 'Space Mono', monospace; }
+
+  footer {
+    border-top: 1px solid rgba(251,243,231,0.1);
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: rgba(251,243,231,0.45);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-side { border-left: none; border-top: 2px solid var(--gold); padding-left: 0; padding-top: 20px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stack-row { grid-template-columns: 110px 1fr 40px; gap: 14px; }
+    .nav-links { gap: 16px; }
+  }
+
+  a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+</style>
 </head>
 <body>
-  <main class="app" aria-label="Calculator">
-    <h1 class="visually-hidden">Calculator</h1>
 
-    <div class="calculator" role="application" aria-labelledby="calc-label">
-      <div id="calc-label" class="screen" aria-live="polite">
-        <div id="expression" class="expression" aria-hidden="true">0</div>
-        <div id="result" class="result">0</div>
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">S. SIBIYA</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="eyebrow">
+    <div class="eq"><span></span><span></span><span></span><span></span></div>
+    Jozini, KZN → Durban
+  </div>
+  <h1 class="name">Sizwe<br>Sibiya<span class="accent">.</span></h1>
+  <p class="role-line">
+    Frontend developer in the making, currently studying at <strong>WeThinkCode_ Durban</strong>.
+    Building things that matter, one line of code at a time.
+  </p>
+  <div class="hero-tags">
+    <span class="tag">HTML5 / CSS3 / JS</span>
+    <span class="tag">Python & Java — learning</span>
+    <span class="tag">E-Commerce</span>
+    <span class="tag">Available for projects</span>
+  </div>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#contact">Let's work together</a>
+    <a class="btn btn-ghost" href="#work">See my work</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title">Building with intention</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm a software developer student at WeThinkCode_ Durban, focused on frontend — clean, accessible, mobile-first interfaces that actually work for the people using them.</p>
+        <p>My goal is straightforward: build my own startup, work at a top tech company, and eventually freelance on my own terms. Every project right now is a step toward that.</p>
+        <p>Outside of code, it's Amapiano, a good action or thriller movie, and getting my rice and chicken recipe just right. Good day, good work — that's the balance I'm building toward.</p>
       </div>
-
-      <div class="buttons" role="group" aria-label="Calculator buttons">
-        <button class="btn func" data-action="clear" aria-label="Clear">C</button>
-        <button class="btn func" data-action="backspace" aria-label="Backspace">←</button>
-        <button class="btn func" data-value="/" aria-label="Divide">÷</button>
-        <button class="btn op" data-value="*" aria-label="Multiply">×</button>
-
-        <button class="btn" data-value="7" aria-label="Seven">7</button>
-        <button class="btn" data-value="8" aria-label="Eight">8</button>
-        <button class="btn" data-value="9" aria-label="Nine">9</button>
-        <button class="btn op" data-value="-" aria-label="Minus">−</button>
-
-        <button class="btn" data-value="4" aria-label="Four">4</button>
-        <button class="btn" data-value="5" aria-label="Five">5</button>
-        <button class="btn" data-value="6" aria-label="Six">6</button>
-        <button class="btn op" data-value="+" aria-label="Plus">+</button>
-
-        <button class="btn" data-value="1" aria-label="One">1</button>
-        <button class="btn" data-value="2" aria-label="Two">2</button>
-        <button class="btn" data-value="3" aria-label="Three">3</button>
-        <button class="btn equals tall" data-action="equals" aria-label="Equals">=</button>
-
-        <button class="btn wide" data-value="0" aria-label="Zero">0</button>
-        <button class="btn" data-value="." aria-label="Decimal point">.</button>
+      <div class="about-side">
+        <div class="stat">
+          <span class="n">WeThinkCode_</span>
+          <span class="l">Durban Campus</span>
+        </div>
+        <div class="stat">
+          <span class="n">Jozini, KZN</span>
+          <span class="l">Where it started</span>
+        </div>
+        <div class="stat">
+          <span class="n">Open</span>
+          <span class="l">Remote & local Durban projects</span>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="help">Keyboard: digits, + - * / or × ÷, Enter for equals, Backspace to delete, Escape to clear.</p>
-  </main>
+<section id="stack">
+  <div class="wrap">
+    <div class="section-label">02 — Stack</div>
+    <h2 class="section-title">Tools I build with</h2>
+    <div class="stack-list">
+      <div class="stack-row">
+        <div class="label">HTML5</div>
+        <div class="meter"><div style="width:90%"></div></div>
+        <div class="pct">90%</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">CSS3</div>
+        <div class="meter"><div style="width:85%"></div></div>
+        <div class="pct">85%</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">JavaScript</div>
+        <div class="meter"><div style="width:75%"></div></div>
+        <div class="pct">75%</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">Python</div>
+        <div class="meter"><div style="width:45%"></div></div>
+        <div class="pct">Learning</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">Java</div>
+        <div class="meter"><div style="width:40%"></div></div>
+        <div class="pct">Learning</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">Git & GitHub</div>
+        <div class="meter"><div style="width:80%"></div></div>
+        <div class="pct">80%</div>
+      </div>
+      <div class="stack-row">
+        <div class="label">Figma</div>
+        <div class="meter"><div style="width:55%"></div></div>
+        <div class="pct">55%</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js" defer></script>
+<section id="work">
+  <div class="wrap">
+    <div class="section-label">03 — Work</div>
+    <h2 class="section-title">What I'm building</h2>
+
+    <div class="project-card">
+      <span class="ptag">Live · AI</span>
+      <h3>KickOff Intelligence</h3>
+      <p>An AI-powered football prediction app that goes beyond the scoreline. Enter any two teams and it returns a full tactical breakdown — likely score, win probabilities, key strengths, and the reasoning behind the outcome — powered by IBM Granite. Built solo for the BemyApp Innovation Challenge, June 2025.</p>
+      <a class="plink" href="https://kick-off-intelligence.vercel.app" target="_blank" rel="noopener">View project →</a>
+    </div>
+
+    <div class="project-card">
+      <span class="ptag">Live · Community</span>
+      <h3>DevMzansi</h3>
+      <p>A free online community for young South African developers — no fees, no gatekeeping. Resources, junior dev job listings, and a network built for the SA context, run across WhatsApp, Discord, and a web platform I founded and built.</p>
+      <a class="plink" href="https://dev-mzansi.vercel.app/" target="_blank" rel="noopener">View project →</a>
+    </div>
+
+    <div class="project-card dim">
+      <span class="ptag">Coming soon</span>
+      <h3>More projects on the way</h3>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="section-label">04 — Contact</div>
+    <h2 class="section-title">Let's build something</h2>
+    <p class="contact-intro">Available for projects and collaborations — remote or around Durban. Reach out on whichever platform works for you.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" rel="noopener">
+        <span class="plat">WhatsApp</span><span class="arrow">↗</span>
+      </a>
+      <a class="contact-item" href="https://www.instagram.com/mudes2026" target="_blank" rel="noopener">
+        <span class="plat">Instagram</span><span class="arrow">↗</span>
+      </a>
+      <a class="contact-item" href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank" rel="noopener">
+        <span class="plat">Facebook</span><span class="arrow">↗</span>
+      </a>
+      <a class="contact-item" href="https://tiktok.com/@sizwesibiya7" target="_blank" rel="noopener">
+        <span class="plat">TikTok</span><span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© 2026 Sizwe Sicelimilo Sibiya</div>
+  <div>Built with HTML, CSS & a lot of Amapiano</div>
+</footer>
+
 </body>
 </html>
