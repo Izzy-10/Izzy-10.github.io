@@ -94,6 +94,63 @@
     .eq span { animation: none; transform: scaleY(0.7); }
   }
 
+  /* --- PROFILE PHOTO --- */
+  .profile-pic-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 28px;
+    border-radius: 100%;
+  }
+  .profile-pic-btn img {
+    width: 96px;
+    height: 96px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    display: block;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .profile-pic-btn:hover img {
+    transform: scale(1.04);
+    border-color: var(--coral);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(23,19,20,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 32px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: min(500px, 90vw);
+    max-height: 80vh;
+    border-radius: 16px;
+    border: 2px solid var(--gold);
+    display: block;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: 1px solid rgba(251,243,231,0.3);
+    color: var(--paper);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    padding: 8px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { border-color: var(--gold); color: var(--gold); }
+
   /* --- HERO --- */
   .hero {
     min-height: 100vh;
@@ -395,6 +452,10 @@
 </nav>
 
 <header class="hero wrap">
+  <button class="profile-pic-btn" onclick="document.getElementById('lightbox').classList.add('open')" aria-label="View full-size photo of Sizwe Sibiya">
+    <img src="profile.jpg" alt="Sizwe Sibiya">
+  </button>
+
   <div class="eyebrow">
     <div class="eq"><span></span><span></span><span></span><span></span></div>
     Jozini, KZN → Durban
@@ -415,6 +476,11 @@
     <a class="btn btn-ghost" href="#work">See my work</a>
   </div>
 </header>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) this.classList.remove('open')">
+  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">Close ✕</button>
+  <img src="profile.jpg" alt="Sizwe Sibiya — full size">
+</div>
 
 <section id="about">
   <div class="wrap">
@@ -540,6 +606,14 @@
   <div>© 2026 Sizwe Sicelimilo Sibiya</div>
   <div>Built with HTML, CSS & a lot of Amapiano</div>
 </footer>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  });
+</script>
 
 </body>
 </html>
