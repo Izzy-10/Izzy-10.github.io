@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png"/>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <title>Opportunities — DevMzansi</title>
+  <meta name="description" content="Verified job, internship, and learnership opportunities for the DevMzansi community — coming soon."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dev-mzansi.vercel.app/opportunities.html"/>
+  <meta property="og:title" content="Opportunities — DevMzansi"/>
+  <meta property="og:description" content="Verified job, internship, and learnership opportunities for the DevMzansi community — coming soon."/>
+  <meta property="og:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Opportunities — DevMzansi"/>
+  <meta name="twitter:description" content="Verified job, internship, and learnership opportunities for the DevMzansi community — coming soon."/>
+  <meta name="twitter:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --gold: #c9a84c;
+      --gold-soft: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --gold-border: rgba(201,168,76,0.35);
+      --white: #111111;
+      --muted: #666;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-soft); }
+
+    /* MENU */
+    .menu-wrap { position: relative; }
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+    .menu-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.6rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      min-width: 200px;
+      padding: 0.5rem;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .menu-dropdown a:hover { background: var(--gold-dim); color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--gold); }
+
+    /* SEARCH CARD */
+    .search-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+    }
+
+    .search-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      text-align: left;
+    }
+
+    .search-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .search-tabs {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .search-tab {
+      position: relative;
+    }
+
+    .search-tab input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .search-tab span {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 1.1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .search-tab input:checked + span {
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    .search-field {
+      margin-bottom: 1.1rem;
+    }
+
+    .search-field label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .search-field input[type="text"] {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+
+    .search-field input:focus { outline: none; border-color: var(--gold); }
+
+    .search-submit {
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-submit:hover { background: var(--gold-soft); }
+
+    /* EMPTY STATE */
+    .empty-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+      text-align: center;
+    }
+
+    .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .empty-wrap h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .empty-wrap p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .empty-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-soft); }
+
+    .btn-secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.7rem 1.3rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: var(--gold-dim); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 3.5rem 1.25rem 1.5rem; }
+      .empty-wrap { padding: 1.5rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dev<span>Mzansi</span></a>
+  <div class="nav-right">
+    <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" class="nav-cta" target="_blank">Join Free</a>
+    <div class="menu-wrap">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu-dropdown" id="menu-dropdown">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="skills.html">Skills</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="hire.html">Partner with DevMzansi</a>
+        <a href="submit-opportunity.html">Submit an Opportunity</a>
+        <a href="partner.html">Contact Us</a>
+        <a href="assistant.html">Ask Boni 🤖</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Opportunities</div>
+  <h1>Real roles for <em>Mzansi</em>.</h1>
+</section>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-card">
+    <h2>What do you want to search for?</h2>
+    <form id="opportunity-search">
+      <div class="search-tabs">
+        <label class="search-tab">
+          <input type="radio" name="search_type" value="Jobs" checked />
+          <span>Jobs</span>
+        </label>
+        <label class="search-tab">
+          <input type="radio" name="search_type" value="Skills" />
+          <span>Skills</span>
+        </label>
+      </div>
+
+      <div class="search-field">
+        <label for="search_query">Enter a role, industry, or skill</label>
+        <input type="text" id="search_query" name="search_query" placeholder="e.g. Call centre, construction, admin" />
+      </div>
+
+      <div class="search-field">
+        <label for="search_location">Location</label>
+        <input type="text" id="search_location" name="search_location" placeholder="e.g. Durban, or Remote" />
+      </div>
+
+      <button type="submit" class="search-submit">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- EMPTY STATE -->
+<div class="empty-wrap" id="empty-state">
+  <div class="empty-icon">🔍</div>
+  <h2 id="empty-heading">Opportunities are coming soon</h2>
+  <p id="empty-text">We're currently reviewing and verifying opportunities before sharing them. Please check back soon.</p>
+  <div class="empty-actions">
+    <a href="submit-opportunity.html" class="btn-primary">Submit an Opportunity →</a>
+    <a href="https://github.com/Izzy-10/DevMzansi/discussions" class="btn-secondary" target="_blank">Get Updates</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Built with 🖤 by <span style="color:#c9a84c;">Nation</span> · DevMzansi © 2026 · <a href="index.html">Home</a> · <a href="jobs.html">Jobs</a> · <a href="blog.html">Blog</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="assistant.html">Ask Boni 🤖</a> · <a href="https://ko-fi.com/devmzansi" target="_blank" style="color:#FF5E5B;">☕ Support us</a> · <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="color:#1877F2;">📘 Facebook</a>
+</footer>
+
+<!-- CONTACT US SECTION -->
+<section style="background:#f5f5f5;border-top:1px solid #e0e0e0;padding:4rem 2rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:#c9a84c;font-family:Space Grotesk,sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.25rem;">Contact Us</div>
+    <h2 style="font-family:Space Grotesk,sans-serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;">Get in touch with <span style="color:#c9a84c;">DevMzansi</span></h2>
+    <p style="color:#666;font-size:0.95rem;margin-bottom:2rem;line-height:1.7;">Have a question, want to partner with us, or just want to say hi? We would love to hear from you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za" style="display:inline-flex;align-items:center;gap:0.5rem;background:#c9a84c;color:#000;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📧 Email Us</a>
+      <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1877F2;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📘 Facebook</a>
+      <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu-dropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.querySelector('.menu-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.remove('open');
+    }
+  });
+
+  // Update this to the real count once opportunities go live —
+  // it decides which "no results" message people see.
+  const TOTAL_LIVE_LISTINGS = 0;
+
+  document.getElementById('opportunity-search').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const searchType = document.querySelector('input[name="search_type"]:checked').value;
+    const query = document.getElementById('search_query').value.trim();
+
+    if (searchType === 'Skills') {
+      window.location.href = 'skills.html';
+      return;
+    }
+
+    const heading = document.getElementById('empty-heading');
+    const text = document.getElementById('empty-text');
+
+    if (TOTAL_LIVE_LISTINGS === 0) {
+      heading.textContent = 'Opportunities are coming soon';
+      text.textContent = "We're currently reviewing and verifying opportunities before sharing them. Please check back soon.";
+    } else if (query) {
+      heading.textContent = `No matches for "${query}" right now`;
+      text.textContent = 'Try a broader search, or check back soon — we add new opportunities regularly.';
+    } else {
+      heading.textContent = 'No opportunities match yet';
+      text.textContent = 'Try a specific search, or check back soon — we add new opportunities regularly.';
+    }
+
+    document.getElementById('empty-state').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+
+</body>
+</html>

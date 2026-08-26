@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boni — DevMzansi Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --gold: #c9a84c;
+      --gold-soft: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --gold-border: rgba(201,168,76,0.35);
+      --text: #111111;
+      --muted: #666;
+      --muted2: #999;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: #111; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-soft); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: #111;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: #111;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .nav-right { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    /* CHAT CONTAINER */
+    .chat-wrap {
+      max-width: 720px;
+      width: 100%;
+      margin: 1.5rem auto 0;
+      padding: 0 1.5rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* QUICK PROMPTS */
+    .quick-prompts {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .quick-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .quick-btn:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    /* MESSAGES */
+    .messages {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 300px;
+      max-height: 480px;
+      overflow-y: auto;
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user { flex-direction: row-reverse; }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      flex-shrink: 0;
+    }
+
+    .avatar.bot {
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+    }
+
+    .avatar.user {
+      background: #111;
+      color: #fff;
+    }
+
+    .bubble {
+      max-width: 80%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .message.bot .bubble {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-top-left-radius: 4px;
+    }
+
+    .message.user .bubble {
+      background: var(--gold);
+      color: #000;
+      border-top-right-radius: 4px;
+      font-weight: 500;
+    }
+
+    .bubble a {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
+    .message.user .bubble a { color: #000; }
+
+    /* TYPING INDICATOR */
+    .typing {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+
+    .typing span {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+
+    /* INPUT */
+    .input-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-end;
+    }
+
+    .input-box {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      resize: none;
+      outline: none;
+      min-height: 48px;
+      max-height: 120px;
+      transition: border-color 0.2s;
+      line-height: 1.5;
+    }
+    .input-box:focus { border-color: var(--gold); }
+    .input-box::placeholder { color: var(--muted2); }
+
+    .send-btn {
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.2s, transform 0.1s;
+      flex-shrink: 0;
+    }
+    .send-btn:hover { background: var(--gold-soft); }
+    .send-btn:active { transform: scale(0.95); }
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .input-hint {
+      font-size: 0.73rem;
+      color: var(--muted2);
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #999;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 2rem 1.25rem 1rem; }
+      .chat-wrap { padding: 0 1rem 1.5rem; }
+      .messages { max-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dev<span>Mzansi</span></a>
+  <div class="nav-right">
+    <a href="jobs.html" class="nav-link">Jobs</a>
+    <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" class="nav-cta" target="_blank">Join Free</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="assistant.html">Ask Boni 🤖</a>
+  <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" target="_blank">Join WhatsApp</a>
+  <a href="https://discord.gg/PyebGZGcb" target="_blank">Join Discord</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🤖 AI Powered</div>
+  <h1>Meet <em>Boni</em> — your DevMzansi PA</h1>
+  <p>Ask anything about coding, resources, opportunities, or DevMzansi. Boni is here to help 🇿🇦</p>
+</div>
+
+<!-- CHAT -->
+<div class="chat-wrap">
+
+  <!-- QUICK PROMPTS -->
+  <div class="quick-prompts">
+    <button class="quick-btn" onclick="sendQuick('How do I join DevMzansi?')">How do I join? 💬</button>
+    <button class="quick-btn" onclick="sendQuick('Where can I find junior dev jobs in South Africa?')">Find SA jobs 💼</button>
+    <button class="quick-btn" onclick="sendQuick('What free resources can help me learn to code?')">Free resources 📚</button>
+    <button class="quick-btn" onclick="sendQuick('I am a beginner, where do I start learning to code?')">I am a beginner 🌱</button>
+  </div>
+
+  <!-- MESSAGES -->
+  <div class="messages" id="messages">
+    <div class="message bot">
+      <div class="avatar bot">B</div>
+      <div class="bubble">
+        Sawubona! 👋 I'm <strong>Boni</strong>, the DevMzansi assistant.<br/><br/>
+        I can help you with coding questions, finding resources, SA job opportunities, or anything about the DevMzansi community. What do you need? 🇿🇦
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-row">
+    <button id="micBtn" onclick="toggleMic()" title="Voice input" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;flex-shrink:0;transition:all 0.2s;">🎤</button>
+    <textarea
+      class="input-box"
+      id="userInput"
+      placeholder="Ask Boni anything..."
+      rows="1"
+      onkeydown="handleKey(event)"
+      oninput="autoResize(this)"
+    ></textarea>
+    <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+  </div>
+  <div class="input-hint">🎤 Tap mic to speak · 🔊 Boni will talk back · Press Enter to send</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html">DevMzansi</a> · <a href="jobs.html">Jobs</a> · <a href="privacy.html">Privacy Policy</a> · Built by Nation
+</footer>
+
+<script>
+  const SYSTEM_PROMPT = `You are Boni, the friendly and helpful AI assistant for DevMzansi — a free online community for young South African developers. You were created by Nation (Sizwe Sibiya), the founder of DevMzansi.
+
+Your personality:
+- Warm, friendly, and encouraging — like a knowledgeable older sibling
+- You understand the South African context deeply
+- You are bilingual — you understand and can respond in both English and isiZulu
+- If someone speaks to you in isiZulu, respond in isiZulu naturally
+- You occasionally use SA slang like "sharp", "eish", "lekker", "mfethu", "sawubona", "ngiyabonga" naturally
+- You are always positive and never gatekeep information
+
+Your knowledge:
+- DevMzansi is a free community on WhatsApp (https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc) and Discord (https://discord.gg/PyebGZGcb)
+- Website: https://dev-mzansi.vercel.app
+- Jobs board: https://dev-mzansi.vercel.app/jobs
+- Founded by Nation (Sizwe Sibiya), a software development student at WeThinkCode_ Durban
+- DevMzansi is completely free — no fees, no gatekeeping
+- The community shares resources, job opportunities, project feedback, and support
+
+You can help with:
+- Questions about DevMzansi and how to join
+- Coding questions (HTML, CSS, JavaScript, Python, Java, and more)
+- Finding free learning resources
+- SA tech job hunting advice
+- Career advice for young SA developers
+- General programming concepts
+
+Keep responses concise and helpful. Use markdown for code. Always encourage the person to join the DevMzansi community if relevant.`;
+
+  let messages = [];
+  let isLoading = false;
+  let isListening = false;
+  let recognition = null;
+  let currentUtterance = null;
+  let isSpeaking = false;
+  function toggleMic() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Voice input is not supported on this browser. Try Chrome.');
+      return;
+    }
+
+    if (isListening) {
+      recognition.stop();
+      return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'en-ZA';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      isListening = true;
+      document.getElementById('micBtn').style.background = '#ffeded';
+      document.getElementById('micBtn').style.borderColor = '#ff4444';
+      document.getElementById('micBtn').textContent = '🔴';
+    };
+
+    recognition.onresult = (e) => {
+      const transcript = e.results[0][0].transcript;
+      document.getElementById('userInput').value = transcript;
+      autoResize(document.getElementById('userInput'));
+    };
+
+    recognition.onend = () => {
+      isListening = false;
+      document.getElementById('micBtn').style.background = 'var(--surface)';
+      document.getElementById('micBtn').style.borderColor = 'var(--border)';
+      document.getElementById('micBtn').textContent = '🎤';
+      // Auto send after voice input
+      if (document.getElementById('userInput').value.trim()) {
+        sendMessage();
+      }
+    };
+
+    recognition.onerror = () => {
+      isListening = false;
+      document.getElementById('micBtn').textContent = '🎤';
+    };
+
+    recognition.start();
+  }
+
+  // --- TEXT TO SPEECH ---
+  function speakText(text, btnEl) {
+    if (!('speechSynthesis' in window)) return;
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      isSpeaking = false;
+      document.querySelectorAll('.speak-btn').forEach(b => b.textContent = '🔊');
+      if (btnEl) btnEl.textContent = '🔊';
+      return;
+    }
+
+    const clean = text.replace(/[*_`#>\[\]()]/g, '').replace(/https?:\/\/\S+/g, '').trim();
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = 'en-ZA';
+    utterance.rate = 0.95;
+    utterance.pitch = 1.05;
+    utterance.volume = 1;
+
+    utterance.onstart = () => {
+      isSpeaking = true;
+      if (btnEl) btnEl.textContent = '⏸';
+    };
+
+    utterance.onend = () => {
+      isSpeaking = false;
+      if (btnEl) btnEl.textContent = '🔊';
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function sendQuick(text) {
+    document.getElementById('userInput').value = text;
+    sendMessage();
+  }
+
+  function scrollToBottom() {
+    const msgs = document.getElementById('messages');
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function addMessage(role, content) {
+    const msgs = document.getElementById('messages');
+    const div = document.createElement('div');
+    div.className = `message ${role}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = `avatar ${role}`;
+    avatar.textContent = role === 'bot' ? 'B' : 'U';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = formatMessage(content);
+
+    if (role === 'bot') {
+      const speakBtn = document.createElement('button');
+      speakBtn.className = 'speak-btn';
+      speakBtn.textContent = '🔊';
+      speakBtn.title = 'Play / Pause';
+      speakBtn.style.cssText = 'background:none;border:1px solid var(--border);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.75rem;cursor:pointer;margin-top:0.5rem;display:block;color:var(--muted);transition:all 0.2s;';
+      speakBtn.onclick = () => speakText(content, speakBtn);
+      bubble.appendChild(speakBtn);
+    }
+
+    div.appendChild(avatar);
+    div.appendChild(bubble);
+    msgs.appendChild(div);
+    scrollToBottom();
+    return bubble;
+  }
+
+  function formatMessage(text) {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code style="background:#f0f0f0;padding:2px 5px;border-radius:4px;font-size:0.85em;">$1</code>')
+      .replace(/\n/g, '<br/>');
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('messages');
+    const div = document.createElement('div');
+    div.className = 'message bot';
+    div.id = 'typing-indicator';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar bot';
+    avatar.textContent = 'B';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble typing';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
+
+    div.appendChild(avatar);
+    div.appendChild(bubble);
+    msgs.appendChild(div);
+    scrollToBottom();
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage() {
+    if (isLoading) return;
+    const input = document.getElementById('userInput');
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    input.style.height = 'auto';
+    isLoading = true;
+    document.getElementById('sendBtn').disabled = true;
+
+    addMessage('user', text);
+    messages.push({ role: 'user', content: text });
+
+    showTyping();
+
+    try {
+      const response = await fetch('/api/boni', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages })
+      });
+
+      const data = await response.json();
+      removeTyping();
+
+      const reply = data.reply || "Eish, something went wrong. Try again mfethu 🙏";
+      messages.push({ role: 'assistant', content: reply });
+      addMessage('bot', reply);
+
+    } catch (err) {
+      removeTyping();
+      console.error('Boni error:', err);
+      addMessage('bot', 'Eish, I had trouble connecting. Check your internet and try again 🙏');
+    } finally {
+      isLoading = false;
+      document.getElementById('sendBtn').disabled = false;
+      input.focus();
+    }
+
+    return;
+  }
+</script>
+
+</body>
+</html>

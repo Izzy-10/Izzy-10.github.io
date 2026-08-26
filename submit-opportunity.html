@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png"/>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <title>Submit an Opportunity — DevMzansi</title>
+  <meta name="description" content="Submit a job, internship, learnership, or opportunity for the DevMzansi community to see."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dev-mzansi.vercel.app/submit-opportunity.html"/>
+  <meta property="og:title" content="Submit an Opportunity — DevMzansi"/>
+  <meta property="og:description" content="Submit a job, internship, learnership, or opportunity for the DevMzansi community to see."/>
+  <meta property="og:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Submit an Opportunity — DevMzansi"/>
+  <meta name="twitter:description" content="Submit a job, internship, learnership, or opportunity for the DevMzansi community to see."/>
+  <meta name="twitter:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --gold: #c9a84c;
+      --gold-soft: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --gold-border: rgba(201,168,76,0.35);
+      --white: #111111;
+      --muted: #666;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-soft); }
+
+    /* MENU */
+    .menu-wrap { position: relative; }
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+    .menu-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.6rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      min-width: 200px;
+      padding: 0.5rem;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .menu-dropdown a:hover { background: var(--gold-dim); color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 4rem 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--gold); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* FORM */
+    .form-wrap {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 6rem;
+    }
+
+    .form-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .form-box h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .field {
+      margin-bottom: 1.25rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .field .hint {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0.25rem;
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="url"],
+    .field input[type="date"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.5;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.75rem 0;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    /* PAY TYPE OPTIONS */
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .option-pill { position: relative; }
+
+    .option-pill input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .option-pill span {
+      display: block;
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .option-pill input:checked + span {
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.85rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--gold-soft); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 3rem 1.25rem 1rem; }
+      .form-wrap { padding: 1.25rem 1.25rem 4rem; }
+      .form-box { padding: 1.5rem; }
+      .field-row { grid-template-columns: 1fr; }
+      .options { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dev<span>Mzansi</span></a>
+  <div class="nav-right">
+    <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" class="nav-cta" target="_blank">Join Free</a>
+    <div class="menu-wrap">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu-dropdown" id="menu-dropdown">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="skills.html">Skills</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="hire.html">Partner with DevMzansi</a>
+        <a href="submit-opportunity.html">Submit an Opportunity</a>
+        <a href="partner.html">Contact Us</a>
+        <a href="assistant.html">Ask Boni 🤖</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">For Employers & Partners</div>
+  <h1>Submit an <em>Opportunity</em></h1>
+  <p>Ready to post a role? Fill in the details below and we'll review it before it goes live on the DevMzansi jobs board.</p>
+</section>
+
+<!-- FORM -->
+<div class="form-wrap">
+  <div class="form-box">
+    <h2>Opportunity Details</h2>
+    <form id="opportunity-form">
+
+      <div class="section-label">The Role</div>
+
+      <div class="field">
+        <label for="job_title">Job / Opportunity Title</label>
+        <input type="text" id="job_title" name="job_title" placeholder="e.g. Junior Frontend Developer Intern" required />
+      </div>
+
+      <div class="field">
+        <label for="job_type">Type</label>
+        <select id="job_type" name="job_type" required>
+          <option value="">Select one</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Internship">Internship</option>
+          <option value="Learnership">Learnership</option>
+          <option value="Remote">Remote</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="duration">Duration</label>
+          <input type="text" id="duration" name="duration" placeholder="e.g. 6 months" />
+        </div>
+        <div class="field">
+          <label for="arrangement">Work Arrangement</label>
+          <select id="arrangement" name="arrangement">
+            <option value="">Select one</option>
+            <option value="Remote">Remote</option>
+            <option value="On-site">On-site</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Pay Type</label>
+        <div class="options">
+          <label class="option-pill">
+            <input type="radio" name="pay_type" value="Paid" checked />
+            <span>Paid</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="pay_type" value="Stipend" />
+            <span>Stipend</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="pay_type" value="Unpaid" />
+            <span>Unpaid</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="salary">Salary / Stipend Amount</label>
+        <input type="text" id="salary" name="salary" placeholder="e.g. R15,000–R20,000/month, or state clearly if unpaid" />
+      </div>
+
+      <hr class="section-divider"/>
+      <div class="section-label">Employer & Application</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="company">Company / Organisation</label>
+          <input type="text" id="company" name="company" required />
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" placeholder="e.g. Cape Town" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="apply_link">Application Link</label>
+        <input type="url" id="apply_link" name="apply_link" placeholder="https:// or mailto: address applicants use" required />
+        <span class="hint">This must go directly to your own application page or inbox — DevMzansi doesn't collect applications on your behalf.</span>
+      </div>
+
+      <div class="field">
+        <label for="closing_date">Closing Date</label>
+        <input type="date" id="closing_date" name="closing_date" />
+      </div>
+
+      <hr class="section-divider"/>
+      <div class="section-label">Your Contact Details</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="contact_name">Your Name</label>
+          <input type="text" id="contact_name" name="contact_name" required />
+        </div>
+        <div class="field">
+          <label for="contact_email">Your Email</label>
+          <input type="email" id="contact_email" name="contact_email" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">Anything Else We Should Know?</label>
+        <textarea id="notes" name="notes" placeholder="Optional — extra context, requirements, or questions"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Opportunity →</button>
+    </form>
+    <p class="form-note">This opens your email app with everything pre-filled — nothing is sent automatically. Opportunities are reviewed before publication, and applicants apply directly to the employer or authorised contact.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Built with 🖤 by <span style="color:#c9a84c;">Nation</span> · DevMzansi © 2026 · <a href="index.html">Home</a> · <a href="jobs.html">Jobs</a> · <a href="blog.html">Blog</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="assistant.html">Ask Boni 🤖</a> · <a href="https://ko-fi.com/devmzansi" target="_blank" style="color:#FF5E5B;">☕ Support us</a> · <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="color:#1877F2;">📘 Facebook</a>
+</footer>
+
+<!-- CONTACT US SECTION -->
+<section style="background:#f5f5f5;border-top:1px solid #e0e0e0;padding:4rem 2rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:#c9a84c;font-family:Space Grotesk,sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.25rem;">Contact Us</div>
+    <h2 style="font-family:Space Grotesk,sans-serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;">Get in touch with <span style="color:#c9a84c;">DevMzansi</span></h2>
+    <p style="color:#666;font-size:0.95rem;margin-bottom:2rem;line-height:1.7;">Have a question, want to partner with us, or just want to say hi? We would love to hear from you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za" style="display:inline-flex;align-items:center;gap:0.5rem;background:#c9a84c;color:#000;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📧 Email Us</a>
+      <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1877F2;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📘 Facebook</a>
+      <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu-dropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.querySelector('.menu-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.remove('open');
+    }
+  });
+
+  document.getElementById('opportunity-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const get = (id) => document.getElementById(id).value.trim();
+    const payType = document.querySelector('input[name="pay_type"]:checked').value;
+
+    const subject = `New Opportunity Submission: ${get('job_title')} at ${get('company')}`;
+    const body =
+      `JOB TITLE: ${get('job_title')}\n` +
+      `TYPE: ${get('job_type')}\n` +
+      `DURATION: ${get('duration')}\n` +
+      `WORK ARRANGEMENT: ${get('arrangement')}\n` +
+      `PAY TYPE: ${payType}\n` +
+      `SALARY / STIPEND: ${get('salary')}\n\n` +
+      `COMPANY: ${get('company')}\n` +
+      `LOCATION: ${get('location')}\n` +
+      `APPLICATION LINK: ${get('apply_link')}\n` +
+      `CLOSING DATE: ${get('closing_date')}\n\n` +
+      `SUBMITTED BY: ${get('contact_name')} (${get('contact_email')})\n\n` +
+      `NOTES:\n${get('notes')}`;
+
+    const mailtoLink = `mailto:Ssibiya026m@ai.wethinkcode.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
+</script>
+
+</body>
+</html>

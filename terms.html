@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png"/>
+  <link rel="shortcut icon" href="favicon.ico"/>
+<title>Terms & Conditions — DevMzansi</title>
+  <meta name="description" content="The terms that govern using DevMzansi's community, job board, and partnership services."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dev-mzansi.vercel.app/terms.html"/>
+  <meta property="og:title" content="Terms & Conditions — DevMzansi"/>
+  <meta property="og:description" content="The terms that govern using DevMzansi's community, job board, and partnership services."/>
+  <meta property="og:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Terms & Conditions — DevMzansi"/>
+  <meta name="twitter:description" content="The terms that govern using DevMzansi's community, job board, and partnership services."/>
+  <meta name="twitter:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --gold: #c9a84c;
+      --gold-soft: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --gold-border: rgba(201,168,76,0.35);
+      --white: #111111;
+      --muted: #666;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-soft); }
+
+    /* MENU */
+    .menu-wrap { position: relative; }
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+    .menu-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.6rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      min-width: 180px;
+      padding: 0.5rem;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .menu-dropdown a:hover { background: var(--gold-dim); color: var(--gold); }
+
+    /* CONTENT */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .last-updated {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    p {
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      color: #aaa;
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-box p { margin: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .content { padding: 3rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dev<span>Mzansi</span></a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" class="nav-cta" target="_blank">Join Free</a>
+    <div class="menu-wrap">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu-dropdown" id="menu-dropdown">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="skills.html">Skills</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="hire.html">Partner with DevMzansi</a>
+        <a href="submit-opportunity.html">Submit an Opportunity</a>
+        <a href="partner.html">Contact Us</a>
+        <a href="assistant.html">Ask Boni 🤖</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="badge">Legal</div>
+  <h1>Terms & Conditions</h1>
+  <p class="last-updated">Last updated: July 2026</p>
+  <div class="divider"></div>
+
+  <p>These Terms & Conditions ("Terms") govern your use of the DevMzansi website, our WhatsApp group, Discord server, job board, and any paid listing or partnership service (together, the "Services"). By using our Services, you agree to these Terms. If you don't agree, please don't use the Services.</p>
+  <p>DevMzansi is a free community initiative founded by Sizwe Sibiya, currently operating informally while formal non-profit (NPC/NPO) registration is in progress. These Terms will be updated once registration is finalised.</p>
+
+  <h2>1. Who Can Use DevMzansi</h2>
+  <p>DevMzansi is intended for users aged 13 and older. By using our Services, you confirm that you meet this requirement, or that you have a parent or guardian's permission to do so.</p>
+
+  <h2>2. Free Community Membership</h2>
+  <p>Access to our WhatsApp group, Discord server, learning resources, and browsing the job board is, and will always remain, free. We will never charge you to join, learn, or apply for an opportunity through DevMzansi.</p>
+
+  <h2>3. Paid Job Listings & Partnerships</h2>
+  <p>Companies and individuals may pay to post a job listing or enter a partnership with DevMzansi (e.g. sponsorship, featured listings). By purchasing a listing or partnership, you agree to the following:</p>
+  <ul>
+    <li>Pricing is as displayed on our website at the time of purchase, in South African Rand (ZAR)</li>
+    <li>Payment is arranged directly with us via the contact details provided; we do not currently process payments automatically on this website</li>
+    <li>Listings must accurately describe a genuine, lawful opportunity — we reserve the right to reject or remove any listing that is misleading, discriminatory, unlawful, or does not reflect a real opportunity</li>
+    <li>Listing duration (e.g. 7 or 14 days) begins once the listing goes live, not from the date of payment</li>
+  </ul>
+
+  <h2>4. Refunds</h2>
+  <p>Because listings are reviewed and published individually, refund requests are handled case by case. As a general guide:</p>
+  <ul>
+    <li>If we reject your listing before it goes live, you'll receive a full refund</li>
+    <li>Once a listing has gone live, fees are generally non-refundable, except where we made an error on our side</li>
+    <li>If you believe you're entitled to a refund, contact us and we'll review it fairly and promptly</li>
+  </ul>
+
+  <h2>5. Acceptable Use</h2>
+  <p>When using DevMzansi's community platforms or job board, you agree not to:</p>
+  <ul>
+    <li>Post false, misleading, discriminatory, or unlawful content, including job listings</li>
+    <li>Harass, spam, or abuse other community members</li>
+    <li>Use DevMzansi to collect personal information from other members for unrelated commercial purposes</li>
+    <li>Attempt to disrupt, hack, or misuse the website or our community platforms</li>
+  </ul>
+  <p>We may remove content or restrict access for anyone who breaches these Terms.</p>
+
+  <h2>6. No Guarantee of Outcomes</h2>
+  <p>DevMzansi helps connect learners with resources, community, and opportunities, but we do not guarantee that any specific job application, internship, learnership, sponsorship, or hire will be successful. We are not a party to any employment or business relationship formed between a community member and a company or partner.</p>
+
+  <h2>7. Third-Party Platforms</h2>
+  <p>Our Services rely on third-party platforms including WhatsApp, Discord, and Vercel. We aren't responsible for the availability, security, or content of these third-party platforms, though we choose partners that maintain reasonable standards.</p>
+
+  <h2>8. Limitation of Liability</h2>
+  <p>DevMzansi, its founder, and contributors provide the Services on an "as is" basis, to the fullest extent permitted by South African law. We won't be liable for any indirect, incidental, or consequential loss arising from your use of the Services, including any loss connected to a job application, listing, or partnership. Nothing in these Terms limits liability that cannot be excluded under South African law, including under the Consumer Protection Act, 2008.</p>
+
+  <h2>9. Permitted Use of Partner and Sponsor Funds</h2>
+  <p>DevMzansi may receive funding through community donations, paid opportunity listings, partnerships, sponsorships, hiring-pipeline arrangements, and impact funding.</p>
+  <p>Unless a written agreement states otherwise, DevMzansi may use partner and sponsor funds for the following purposes:</p>
+  <ul>
+    <li><strong>Programme delivery</strong> — the design and delivery of learning, career-readiness, and opportunity-access activities</li>
+    <li><strong>Learning resources</strong> — materials, tools, data support, events, and resources for community members</li>
+    <li><strong>Platform and technology</strong> — website hosting, software, communication tools, security, and maintenance</li>
+    <li><strong>Opportunity sourcing and outreach</strong> — employer engagement, sourcing legitimate opportunities, and reaching young people in underserved communities</li>
+    <li><strong>People and professional services</strong> — reasonable costs for staff, contractors, facilitators, and specialist support required to deliver DevMzansi's work</li>
+    <li><strong>Administration and compliance</strong> — accounting, banking fees, legal support, registration, record-keeping, insurance, and related operational costs</li>
+    <li><strong>Monitoring and partner reporting</strong> — tracking activities and outcomes, and preparing reports agreed with a partner or sponsor</li>
+    <li><strong>Reserves and organisational sustainability</strong> — reasonable funds retained to support continuity, responsible operations, and delivery of commitments</li>
+  </ul>
+
+  <p><strong>Restricted Funds.</strong> Where a partner or sponsor provides funds for a specific purpose, DevMzansi will use those funds for that agreed purpose. DevMzansi may only change that purpose with the partner's or sponsor's prior written agreement.</p>
+
+  <p><strong>Reporting.</strong> Where reporting is included in a written partnership or sponsorship agreement, DevMzansi will provide the agreed reporting on activities, use of funds, and/or outcomes within the agreed timeframe.</p>
+
+  <p><strong>No Guarantee of Specific Outcomes.</strong> DevMzansi will use reasonable efforts to deliver the agreed activities and commitments. However, funding or partnership support does not guarantee a particular hiring outcome, learner outcome, commercial result, or social-impact result unless that outcome is expressly agreed in writing.</p>
+
+  <p><strong>Unspent Funds.</strong> If a written agreement ends and restricted funds remain unspent, DevMzansi and the relevant partner or sponsor will agree in writing whether the remaining amount will be returned, redirected to a related agreed purpose, or used to complete outstanding agreed activities.</p>
+
+  <h2>10. Intellectual Property</h2>
+  <p>The DevMzansi name, logo, and website content belong to DevMzansi. You're welcome to share links to our Services, but please don't copy or repurpose our content or branding without asking us first.</p>
+
+  <h2>11. Changes to These Terms</h2>
+  <p>We may update these Terms from time to time as DevMzansi grows — for example, once our NPC/NPO registration is finalised, or if we introduce automated payments. Continued use of the Services after a change means you accept the updated Terms.</p>
+
+  <h2>12. Governing Law</h2>
+  <p>These Terms are governed by the laws of the Republic of South Africa, and any dispute will be subject to the jurisdiction of the South African courts.</p>
+
+  <h2>13. Contact Us</h2>
+  <div class="contact-box">
+    <h3>Questions about these Terms?</h3>
+    <p>Reach out to us at <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za">Ssibiya026m@ai.wethinkcode.co.za</a>, or use our <a href="partner.html">Partner enquiry form</a>, and we'll get back to you.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Built with 🖤 by <span style="color:#c9a84c;">Nation</span> · DevMzansi © 2026 · <a href="index.html">Home</a> · <a href="jobs.html">Jobs</a> · <a href="blog.html">Blog</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="assistant.html">Ask Boni 🤖</a> · <a href="https://ko-fi.com/devmzansi" target="_blank" style="color:#FF5E5B;">☕ Support us</a> · <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="color:#1877F2;">📘 Facebook</a>
+</footer>
+
+<!-- CONTACT US SECTION -->
+<section style="background:#f5f5f5;border-top:1px solid #e0e0e0;padding:4rem 2rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:#c9a84c;font-family:Space Grotesk,sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.25rem;">Contact Us</div>
+    <h2 style="font-family:Space Grotesk,sans-serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;">Get in touch with <span style="color:#c9a84c;">DevMzansi</span></h2>
+    <p style="color:#666;font-size:0.95rem;margin-bottom:2rem;line-height:1.7;">Have a question, want to partner with us, or just want to say hi? We would love to hear from you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za" style="display:inline-flex;align-items:center;gap:0.5rem;background:#c9a84c;color:#000;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📧 Email Us</a>
+      <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1877F2;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📘 Facebook</a>
+      <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu-dropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.querySelector('.menu-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>

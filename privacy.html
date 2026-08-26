@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png"/>
+  <link rel="shortcut icon" href="favicon.ico"/>
+<title>Privacy Policy — DevMzansi</title>
+  <meta name="description" content="How DevMzansi collects, uses, and protects your personal information."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://dev-mzansi.vercel.app/privacy.html"/>
+  <meta property="og:title" content="Privacy Policy — DevMzansi"/>
+  <meta property="og:description" content="How DevMzansi collects, uses, and protects your personal information."/>
+  <meta property="og:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Privacy Policy — DevMzansi"/>
+  <meta name="twitter:description" content="How DevMzansi collects, uses, and protects your personal information."/>
+  <meta name="twitter:image" content="https://dev-mzansi.vercel.app/og-image.jpg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f5;
+      --border: #e0e0e0;
+      --gold: #c9a84c;
+      --gold-soft: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.12);
+      --white: #111111;
+      --muted: #666;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-soft); }
+
+    /* MENU */
+    .menu-wrap { position: relative; }
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+    .menu-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.6rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      min-width: 180px;
+      padding: 0.5rem;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .menu-dropdown a:hover { background: var(--gold-dim); color: var(--gold); }
+
+    /* CONTENT */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .last-updated {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    p {
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      color: #aaa;
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-box p { margin: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #555;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .content { padding: 3rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dev<span>Mzansi</span></a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" class="nav-cta" target="_blank">Join Free</a>
+    <div class="menu-wrap">
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu-dropdown" id="menu-dropdown">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="skills.html">Skills</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="hire.html">Partner with DevMzansi</a>
+        <a href="submit-opportunity.html">Submit an Opportunity</a>
+        <a href="partner.html">Contact Us</a>
+        <a href="assistant.html">Ask Boni 🤖</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="badge">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="last-updated">Last updated: July 2026</p>
+  <div class="divider"></div>
+
+  <p>DevMzansi ("we", "our", or "us") is a free learning and opportunities community for young South Africans. This Privacy Policy explains what information we collect, why we collect it, how we use and protect it, and the rights you have over it. It applies to our website, WhatsApp group, Discord server, and any other DevMzansi channel.</p>
+  <p>We process personal information in line with South Africa's <strong>Protection of Personal Information Act (POPIA)</strong>. If you're outside South Africa, we still apply these same standards to your information.</p>
+
+  <h2>1. Who We Are</h2>
+  <p>DevMzansi is a community initiative founded by Sizwe Sibiya, currently operating informally while formal non-profit (NPC/NPO) registration is in progress. For any privacy-related request, you can reach us directly using the contact details at the bottom of this page.</p>
+
+  <h2>2. Information We Collect</h2>
+  <p>We only collect what we actually need to run the community. Depending on how you interact with us, this may include:</p>
+  <ul>
+    <li>Your name and email address, if you enquire, apply, or sign up via our website or email</li>
+    <li>Information you voluntarily share in our WhatsApp group, Discord server, or job applications (e.g. skills, CV details, messages)</li>
+    <li>Basic, anonymised website analytics (page visits, general region, device type) collected automatically via Vercel</li>
+  </ul>
+  <p>We do not knowingly collect sensitive personal information (such as health, biometric, or financial data) unless you choose to share it with us directly, and only where relevant to an opportunity you've applied for.</p>
+
+  <h2>3. Why We Collect It (Legal Basis)</h2>
+  <p>We process your information because:</p>
+  <ul>
+    <li>You've given consent by contacting us, joining a platform, or submitting a form</li>
+    <li>It's necessary to respond to your enquiry or connect you with an opportunity</li>
+    <li>It's in our legitimate interest to understand and improve the community, without overriding your rights</li>
+  </ul>
+
+  <h2>4. How We Use Your Information</h2>
+  <p>We use the information we collect to:</p>
+  <ul>
+    <li>Respond to your messages, enquiries, and applications</li>
+    <li>Share community updates, learning resources, and job or partner opportunities</li>
+    <li>Match you with relevant opportunities if you've applied through our jobs board</li>
+    <li>Improve the DevMzansi website and community experience</li>
+  </ul>
+
+  <h2>5. We Do Not Sell Your Data</h2>
+  <p>DevMzansi will never sell, rent, or trade your personal information to third parties. Ever. We only share information with partners (e.g. a company you've applied to work with) when you've clearly opted into that specific opportunity.</p>
+
+  <h2>6. Third-Party Platforms</h2>
+  <p>DevMzansi operates on third-party platforms including WhatsApp, Discord, and Vercel. When you use these platforms, their own privacy policies also apply:</p>
+  <ul>
+    <li><a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank">WhatsApp Privacy Policy</a></li>
+    <li><a href="https://discord.com/privacy" target="_blank">Discord Privacy Policy</a></li>
+    <li><a href="https://vercel.com/legal/privacy-policy" target="_blank">Vercel Privacy Policy</a></li>
+  </ul>
+  <p>We encourage you to read their policies to understand how they independently handle your data. Note that some of these providers may process or store data outside South Africa; we only work with providers that maintain appropriate security and privacy standards.</p>
+
+  <h2>7. Data Retention</h2>
+  <p>We keep personal information only for as long as it's needed for the purpose it was collected — for example, for the duration of a job application process, or while you remain an active member of our community. You can ask us to delete your information at any time (see Section 9).</p>
+
+  <h2>8. Security</h2>
+  <p>We take reasonable technical and organisational steps to protect your information from loss, misuse, or unauthorised access. However, no online platform, including WhatsApp, Discord, or our website, can guarantee absolute security. Please avoid sharing sensitive personal or financial information in public group chats.</p>
+
+  <h2>9. Your Rights</h2>
+  <p>Under POPIA, you have the right to:</p>
+  <ul>
+    <li>Ask what personal information we hold about you</li>
+    <li>Request that we correct or update inaccurate information</li>
+    <li>Request that we delete your information, where reasonably possible</li>
+    <li>Object to how your information is being used</li>
+    <li>Lodge a complaint with the <a href="https://inforegulator.org.za/" target="_blank">Information Regulator of South Africa</a> if you believe your information has been mishandled</li>
+  </ul>
+  <p>To exercise any of these rights, just contact us using the details below — we'll respond as quickly as we can.</p>
+
+  <h2>10. Cookies</h2>
+  <p>Our website does not use tracking or advertising cookies. Vercel may collect anonymous, aggregated usage data to help serve and maintain the site — no personal profile is built from this by us.</p>
+
+  <h2>11. Children's Privacy</h2>
+  <p>DevMzansi is intended for users aged 13 and older. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has shared information with us, please contact us so we can remove it.</p>
+
+  <h2>12. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time as DevMzansi grows — for example, once our NPC/NPO registration is finalised. Any changes will be posted on this page with an updated date at the top.</p>
+
+  <h2>13. Contact Us</h2>
+  <div class="contact-box">
+    <h3>Questions about your privacy?</h3>
+    <p>Reach out to us at <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za">Ssibiya026m@ai.wethinkcode.co.za</a>, or use our <a href="partner.html">Partner enquiry form</a>, and we'll get back to you.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Built with 🖤 by <span style="color:#c9a84c;">Nation</span> · DevMzansi © 2026 · <a href="index.html">Home</a> · <a href="jobs.html">Jobs</a> · <a href="blog.html">Blog</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="assistant.html">Ask Boni 🤖</a> · <a href="https://ko-fi.com/devmzansi" target="_blank" style="color:#FF5E5B;">☕ Support us</a> · <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="color:#1877F2;">📘 Facebook</a>
+</footer>
+
+<!-- CONTACT US SECTION -->
+<section style="background:#f5f5f5;border-top:1px solid #e0e0e0;padding:4rem 2rem;text-align:center;">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);color:#c9a84c;font-family:Space Grotesk,sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:100px;margin-bottom:1.25rem;">Contact Us</div>
+    <h2 style="font-family:Space Grotesk,sans-serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;">Get in touch with <span style="color:#c9a84c;">DevMzansi</span></h2>
+    <p style="color:#666;font-size:0.95rem;margin-bottom:2rem;line-height:1.7;">Have a question, want to partner with us, or just want to say hi? We would love to hear from you.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:Ssibiya026m@ai.wethinkcode.co.za" style="display:inline-flex;align-items:center;gap:0.5rem;background:#c9a84c;color:#000;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📧 Email Us</a>
+      <a href="https://www.facebook.com/DevMzansi?mibextid=rS40aB7S9Ucbxw6v" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#1877F2;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">📘 Facebook</a>
+      <a href="https://chat.whatsapp.com/D6U5zMjgJLe9VFYkMblQkc" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;font-family:Space Grotesk,sans-serif;font-weight:600;font-size:0.88rem;padding:0.7rem 1.4rem;border-radius:8px;text-decoration:none;">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu-dropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.querySelector('.menu-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('menu-dropdown').classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
