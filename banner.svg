@@ -1,6 +1,19 @@
-<body>
-  <!-- PASTE SVG HERE -->
-  <svg> ... </svg>
-  
-  <h1>Rest of your site</h1>
-</body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320">
+  <rect width="1280" height="320" fill="#FFFEFB"/>
+  <!-- Subtle Zulu triangle pattern -->
+  <g opacity="0.06">
+    <path d="M100 40 L140 120 L60 120 Z" fill="none" stroke="#D4A84B" stroke-width="1"/>
+    <path d="M300 40 L340 120 L260 120 Z" fill="none" stroke="#D4A84B" stroke-width="1"/>
+    <path d="M500 40 L540 120 L460 120 Z" fill="none" stroke="#D4A84B" stroke-width="1"/>
+  </g>
+  <!-- GOLD FOIL TEXT -->
+  <text x="640" y="150" font-family="Arial Black" font-size="88" font-weight="900" text-anchor="middle" fill="url(#gold)">SIZWE SIBIYA</text>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <text x="640" y="195" font-family="sans-serif" font-size="18" letter-spacing="6" text-anchor="middle" fill="#111">BASED IN DURBAN SOUTH AFRICA</text>
+  <text x="640" y="235" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#333">Frontend Developer • Builder • Community-First</text>
+</svg>
