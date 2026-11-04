@@ -1,44 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sizwe Sibiya — Frontend Developer</title>
-<style>
-:root{--gold:#D4A84B;--black:#0F0F0F;--foil:linear-gradient(180deg,#FFD700,#B8860B)}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
-body{background:#FFFEFB;color:var(--black)}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;border-bottom:1px solid #eee;position:sticky;top:0;background:#FFFEFB;z-index:10}
-.hero{padding:80px 6%;background:linear-gradient(rgba(255,255,255,0.92),rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1580060868585-a3a27a2b3220?q=80&w=2000') center/cover;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 10 L190 190 L10 190 Z' fill='none' stroke='%23D4A84B' stroke-opacity='0.08'/%3E%3C/svg%3E");opacity:0.4;pointer-events:none}
-.hero h1{font-size:clamp(48px,9vw,96px);font-weight:900;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 #B8860B);letter-spacing:-2px}
-.badge{display:inline-block;border:1px solid var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:32px}
-.card{border:1px solid #E8D9B0;border-radius:16px;padding:24px;background:#fff;transition:transform .2s}
-.card:hover{transform:translateY(-4px)}
-.btn-gold{background:var(--gold);color:#000;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block}
-</style>
-</head>
-<body>
-<nav><strong>SIZWE</strong><div><a href="#work" style="margin-right:16px;text-decoration:none;color:#111">Work</a><a class="btn-gold" href="mailto:sizwe@devmzansi.co.za">Let's Talk</a></div></nav>
+<footer style="background:#0F0F0F; color:#fff; padding:60px 6% 30px; position:relative;">
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; max-width:1200px; margin:0 auto;">
+    
+    <!-- 1. ABOUT ME -->
+    <div>
+      <h3 style="color:#D4A84B; letter-spacing:4px; font-size:1.4rem; margin-bottom:12px;">SIBIYA AI</h3>
+      <p style="color:#aaa; line-height:1.6; font-size:0.9rem;">
+        Made in South Africa, rooted in Zulu culture. Chat on your own or bring friends into a group.
+      </p>
+      <p style="margin-top:12px; font-size:0.85rem;">
+        <span style="display:inline-block; width:8px; height:8px; background:#D4A84B; border-radius:50%; margin-right:6px;"></span>
+        Available for projects & collaborations
+      </p>
+      <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="/about.html" style="background:#D4A84B; color:#000; padding:12px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:0.9rem;">About me →</a>
+        <a href="#" onclick="navigator.share?navigator.share({title:'Sibiya AI',url:location.href}):alert('Link copied: '+location.href)" style="border:1px solid #D4A84B; color:#D4A84B; padding:12px 22px; border-radius:999px; text-decoration:none; font-size:0.9rem;">Share Sibiya AI</a>
+      </div>
+    </div>
 
-<section class="hero">
-<h1>SIZWE SIBIYA</h1>
-<p style="letter-spacing:6px;font-size:14px;margin:10px 0 20px;font-weight:700">BASED IN DURBAN SOUTH AFRICA</p>
-<p style="font-size:18px;opacity:.7">Frontend Developer • Builder • Community-First</p>
-<p style="max-width:600px;margin-top:20px;line-height:1.6;opacity:.7">Frontend developer in the making, studying at WeThinkCode_ Durban. Building things that matter, one line of code at a time — from Jozini, KZN now building out of Durban.</p>
-<div style="margin-top:28px"><a class="btn-gold" href="#work">View My Work →</a></div>
-</section>
+    <!-- 2. PAGES - ALL YOUR PROJECTS -->
+    <div>
+      <h4 style="color:#D4A84B; letter-spacing:3px; font-size:0.75rem; margin-bottom:16px;">PAGES</h4>
+      <ul style="list-style:none; line-height:2.2; font-size:0.95rem;">
+        <li><a href="/" style="color:#ddd; text-decoration:none;">Home</a></li>
+        <li><a href="/about.html" style="color:#ddd; text-decoration:none;">About</a></li>
+        <li><a href="https://sibiya-ai.vercel.app" style="color:#D4A84B; text-decoration:none;">Sibiya AI (This App)</a></li>
+        <li><a href="https://kick-off-intelligence.vercel.app" target="_blank" style="color:#ddd; text-decoration:none;">KickOff Intelligence</a></li>
+        <li><a href="https://dev-mzansi.vercel.app" target="_blank" style="color:#ddd; text-decoration:none;">DevMzansi</a></li>
+        <li><a href="https://izzy-10.github.io" target="_blank" style="color:#ddd; text-decoration:none;">Portfolio</a></li>
+        <li><a href="/support.html" style="color:#ddd; text-decoration:none;">Support</a></li>
+        <li><a href="/privacy.html" style="color:#ddd; text-decoration:none;">Privacy</a></li>
+      </ul>
+    </div>
 
-<section id="work" style="padding:60px 6%">
-<h2 style="font-size:32px">Featured Work</h2>
-<div class="grid">
-<div class="card"><span style="background:#F9E8B8;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700">AI • GROUP CHAT</span><h3 style="margin:12px 0">Sibiya AI</h3><p style="opacity:.7">ChatGPT with a Zulu Heart. Solo or group chat with @Sibiya. Codes, translates, writes CVs.</p><a href="https://sibiya-ai.vercel.app">sibiya-ai.vercel.app →</a></div>
-<div class="card"><span style="background:#F9E8B8;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700">SPORTS • DATA</span><h3 style="margin:12px 0">KickOff Intelligence</h3><p style="opacity:.7">AI-powered football match prediction, powered by IBM Granite.</p><a href="https://kick-off-intelligence.vercel.app">kick-off-intelligence.vercel.app →</a></div>
-<div class="card"><span style="background:#F9E8B8;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700">COMMUNITY</span><h3 style="margin:12px 0">DevMzansi</h3><p style="opacity:.7">Free community for young South African developers.</p><a href="https://dev-mzansi.vercel.app">dev-mzansi.vercel.app →</a></div>
-</div>
-</section>
+    <!-- 3. CONNECT - SOCIALS + EMAIL -->
+    <div>
+      <h4 style="color:#D4A84B; letter-spacing:3px; font-size:0.75rem; margin-bottom:16px;">CONNECT</h4>
+      <ul style="list-style:none; line-height:2.2; font-size:0.95rem;">
+        <li>📧 <a href="mailto:ssibiya026m@ai.wethinkcode.co.za" style="color:#ddd; text-decoration:none;">ssibiya026m@ai.wethinkcode.co.za</a></li>
+        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" style="color:#ddd; text-decoration:none;">WhatsApp - DevMzansi</a></li>
+        <li>📸 <a href="https://www.instagram.com/mudes2026" target="_blank" style="color:#ddd; text-decoration:none;">Instagram @mudes2026</a></li>
+        <li>🎵 <a href="https://tiktok.com/@sizwesibiya7" target="_blank" style="color:#ddd; text-decoration:none;">TikTok @sizwesibiya7</a></li>
+        <li>👤 <a href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank" style="color:#ddd; text-decoration:none;">Facebook</a></li>
+        <li>💼 <a href="https://github.com/Izzy-10" target="_blank" style="color:#ddd; text-decoration:none;">GitHub - Izzy-10</a></li>
+      </ul>
+    </div>
 
-<footer style="text-align:center;padding:40px;background:#0F0F0F;color:#D4A84B">© 2026 Sizwe Sibiya — Durban, South Africa 🇿🇦 • <a href="https://github.com/Izzy-10" style="color:#D4A84B">GitHub</a> • <a href="https://www.instagram.com/mudes2026" style="color:#D4A84B">Instagram</a></footer>
-</body>
-</html>
+  </div>
+
+  <div style="border-top:1px solid #222; margin-top:50px; padding-top:20px; text-align:center; color:#666; font-size:0.8rem; line-height:1.6;">
+    © 2026 Sibiya AI. All rights reserved.<br>
+    Built by Sizwe Sicelimpilo Sibiya · Durban, South Africa · Based in Durban South Africa
+  </div>
+</footer>
