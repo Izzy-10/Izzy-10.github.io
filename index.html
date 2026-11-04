@@ -1,54 +1,136 @@
-<footer style="background:#0F0F0F; color:#fff; padding:60px 6% 30px; position:relative;">
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; max-width:1200px; margin:0 auto;">
-    
-    <!-- 1. ABOUT ME -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sizwe Sibiya — Frontend Developer | Durban SA</title>
+<meta name="description" content="Sizwe Sibiya - Frontend Developer from Jozini, based in Durban. Builder of Sibiya AI, KickOff Intelligence, DevMzansi.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,sans-serif}
+body{background:#0F0F0F;color:#fff;line-height:1.6}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:rgba(15,15,15,0.95);border-bottom:1px solid #222;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+nav b{letter-spacing:4px;color:#fff}
+nav span{color:#D4A84B;font-size:0.85rem;letter-spacing:2px}
+.hero{padding:100px 6% 80px;background:radial-gradient(ellipse at top,#1e1e1e 0%,#0F0F0F 70%);text-align:center;border-bottom:1px solid #222;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#D4A84B,#FFD700,#D4A84B)}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:8px;color:#D4A84B;font-weight:900;line-height:1.1}
+.hero h2{margin-top:12px;letter-spacing:6px;font-size:clamp(0.7rem,2vw,1rem);color:#fff;font-weight:400}
+.hero .tagline{margin-top:20px;color:#aaa;font-size:1.1rem}
+.badges{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badges span{border:1px solid #333;padding:8px 18px;border-radius:999px;font-size:0.8rem;color:#aaa}
+.badges span.gold{border-color:#D4A84B;color:#D4A84B}
+section{padding:70px 6%;max-width:1300px;margin:0 auto}
+.section-title{color:#D4A84B;letter-spacing:4px;font-size:0.8rem;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.card{background:#151515;border:1px solid #222;padding:32px;border-radius:20px;transition:all 0.3s}
+.card:hover{border-color:#D4A84B;transform:translateY(-4px)}
+.card h3{color:#fff;margin-bottom:10px;font-size:1.2rem}
+.card p{color:#888;font-size:0.95rem;line-height:1.6}
+.tech{margin-top:15px;display:flex;gap:8px;flex-wrap:wrap}
+.tech span{font-size:0.7rem;background:#222;color:#999;padding:4px 10px;border-radius:999px}
+.btn{display:inline-block;margin-top:18px;padding:11px 20px;background:#fff;color:#000;border-radius:999px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:0.2s}
+.btn-gold{background:#D4A84B;color:#000}
+.btn:hover{opacity:0.8}
+.about{display:grid;grid-template-columns:1.2fr 0.8fr;gap:50px;align-items:center}
+@media(max-width:900px){.about{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr !important}.hero h1{letter-spacing:4px}}
+footer{background:#080808;border-top:1px solid #1a1a1a;padding:70px 6% 30px}
+.footer-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr 1fr;gap:50px}
+footer a:hover{color:#D4A84B !important}
+</style>
+</head>
+<body>
+
+<nav><b>SIZWE SIBIYA</b><span>DURBAN, SA</span></nav>
+
+<section class="hero">
+<h1>SIZWE SIBIYA</h1>
+<h2>BASED IN DURBAN SOUTH AFRICA</h2>
+<p class="tagline">Frontend Developer • Builder • Community-First • WeThinkCode_ Durban</p>
+<div class="badges"><span class="gold">Available for work</span><span>Jozini → Durban</span><span>WeThinkCode_</span></div>
+</section>
+
+<section>
+<div class="section-title">FEATURED PROJECTS</div>
+<div class="grid">
+<div class="card">
+<h3>Sibiya AI — ChatGPT with a Zulu Heart</h3>
+<p>Solo + Group Chat. Tag @Sibiya in groups. Codes, translates isiZulu, writes CVs, built for Mzansi. 1000+ users.</p>
+<div class="tech"><span>Next.js</span><span>AI SDK</span><span>Zulu NLP</span></div>
+<a class="btn btn-gold" href="https://sibiya-ai.vercel.app" target="_blank">Live App →</a>
+<a class="btn" href="https://github.com/Izzy-10" target="_blank" style="margin-left:8px;background:#222;color:#fff">GitHub</a>
+</div>
+<div class="card">
+<h3>KickOff Intelligence</h3>
+<p>AI football predictions & analytics powered by IBM Granite. Live scores, insights for fans.</p>
+<div class="tech"><span>IBM Granite</span><span>React</span><span>API</span></div>
+<a class="btn" href="https://kick-off-intelligence.vercel.app" target="_blank">View →</a>
+</div>
+<div class="card">
+<h3>DevMzansi</h3>
+<p>Free community platform for young South African developers to learn, share, and grow together.</p>
+<div class="tech"><span>Community</span><span>Next.js</span><span>Education</span></div>
+<a class="btn" href="https://dev-mzansi.vercel.app" target="_blank">View →</a>
+</div>
+</div>
+</section>
+
+<section id="about" class="about">
+<div>
+<div class="section-title">ABOUT ME</div>
+<h2 style="font-size:2.2rem;line-height:1.2;margin-bottom:20px">From Jozini to Durban.<br>Building for Mzansi.</h2>
+<p style="color:#aaa;margin-bottom:16px">I'm Sizwe Sicelimpilo Sibiya, a Frontend Developer studying at WeThinkCode_ Durban. I build products that feel local — rooted in Zulu culture, but world-class in execution.</p>
+<p style="color:#aaa">When I'm not coding, I'm building communities like DevMzansi or experimenting with AI that speaks our languages.</p>
+</div>
+<div style="background:#151515;border:1px solid #222;border-radius:20px;padding:30px">
+<p style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:12px">STACK</p>
+<p style="color:#fff">React / Next.js / TypeScript / Tailwind / Node / AI SDK / Git</p>
+<br>
+<p style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:12px">CURRENTLY</p>
+<p style="color:#ccc">WeThinkCode_ Durban — Software Engineering</p>
+</div>
+</section>
+
+<!-- FOOTER YOU ASKED FOR -->
+<footer>
+  <div class="footer-grid">
     <div>
-      <h3 style="color:#D4A84B; letter-spacing:4px; font-size:1.4rem; margin-bottom:12px;">SIBIYA AI</h3>
-      <p style="color:#aaa; line-height:1.6; font-size:0.9rem;">
-        Made in South Africa, rooted in Zulu culture. Chat on your own or bring friends into a group.
-      </p>
-      <p style="margin-top:12px; font-size:0.85rem;">
-        <span style="display:inline-block; width:8px; height:8px; background:#D4A84B; border-radius:50%; margin-right:6px;"></span>
-        Available for projects & collaborations
-      </p>
-      <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="/about.html" style="background:#D4A84B; color:#000; padding:12px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:0.9rem;">About me →</a>
-        <a href="#" onclick="navigator.share?navigator.share({title:'Sibiya AI',url:location.href}):alert('Link copied: '+location.href)" style="border:1px solid #D4A84B; color:#D4A84B; padding:12px 22px; border-radius:999px; text-decoration:none; font-size:0.9rem;">Share Sibiya AI</a>
+      <h3 style="color:#D4A84B;letter-spacing:5px;font-size:1.5rem;margin-bottom:14px">SIBIYA AI</h3>
+      <p style="color:#999;line-height:1.7;font-size:0.92rem">Made in South Africa, rooted in Zulu culture. Chat on your own or bring friends into a group.</p>
+      <p style="margin-top:16px;color:#ccc;font-size:0.9rem"><span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;margin-right:8px"></span>Available for projects & collaborations</p>
+      <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#about" style="background:#D4A84B;color:#000;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:700;font-size:0.9rem">About me →</a>
+        <a href="https://sibiya-ai.vercel.app" target="_blank" style="border:1px solid #333;color:#ccc;padding:12px 24px;border-radius:999px;text-decoration:none;font-size:0.9rem">Share Sibiya AI</a>
       </div>
     </div>
 
-    <!-- 2. PAGES - ALL YOUR PROJECTS -->
     <div>
-      <h4 style="color:#D4A84B; letter-spacing:3px; font-size:0.75rem; margin-bottom:16px;">PAGES</h4>
-      <ul style="list-style:none; line-height:2.2; font-size:0.95rem;">
-        <li><a href="/" style="color:#ddd; text-decoration:none;">Home</a></li>
-        <li><a href="/about.html" style="color:#ddd; text-decoration:none;">About</a></li>
-        <li><a href="https://sibiya-ai.vercel.app" style="color:#D4A84B; text-decoration:none;">Sibiya AI (This App)</a></li>
-        <li><a href="https://kick-off-intelligence.vercel.app" target="_blank" style="color:#ddd; text-decoration:none;">KickOff Intelligence</a></li>
-        <li><a href="https://dev-mzansi.vercel.app" target="_blank" style="color:#ddd; text-decoration:none;">DevMzansi</a></li>
-        <li><a href="https://izzy-10.github.io" target="_blank" style="color:#ddd; text-decoration:none;">Portfolio</a></li>
-        <li><a href="/support.html" style="color:#ddd; text-decoration:none;">Support</a></li>
-        <li><a href="/privacy.html" style="color:#ddd; text-decoration:none;">Privacy</a></li>
+      <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:20px">PAGES</h4>
+      <ul style="list-style:none;line-height:2.6">
+        <li><a href="/" style="color:#bbb;text-decoration:none">Home</a></li>
+        <li><a href="https://sibiya-ai.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">Sibiya AI</a></li>
+        <li><a href="https://kick-off-intelligence.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">KickOff Intelligence</a></li>
+        <li><a href="https://dev-mzansi.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">DevMzansi</a></li>
+        <li><a href="https://github.com/Izzy-10" target="_blank" style="color:#bbb;text-decoration:none">Portfolio & GitHub</a></li>
       </ul>
     </div>
 
-    <!-- 3. CONNECT - SOCIALS + EMAIL -->
     <div>
-      <h4 style="color:#D4A84B; letter-spacing:3px; font-size:0.75rem; margin-bottom:16px;">CONNECT</h4>
-      <ul style="list-style:none; line-height:2.2; font-size:0.95rem;">
-        <li>📧 <a href="mailto:ssibiya026m@ai.wethinkcode.co.za" style="color:#ddd; text-decoration:none;">ssibiya026m@ai.wethinkcode.co.za</a></li>
-        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" style="color:#ddd; text-decoration:none;">WhatsApp - DevMzansi</a></li>
-        <li>📸 <a href="https://www.instagram.com/mudes2026" target="_blank" style="color:#ddd; text-decoration:none;">Instagram @mudes2026</a></li>
-        <li>🎵 <a href="https://tiktok.com/@sizwesibiya7" target="_blank" style="color:#ddd; text-decoration:none;">TikTok @sizwesibiya7</a></li>
-        <li>👤 <a href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank" style="color:#ddd; text-decoration:none;">Facebook</a></li>
-        <li>💼 <a href="https://github.com/Izzy-10" target="_blank" style="color:#ddd; text-decoration:none;">GitHub - Izzy-10</a></li>
+      <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:20px">CONNECT</h4>
+      <ul style="list-style:none;line-height:2.6;font-size:0.95rem">
+        <li>📧 <a href="mailto:ssibiya026m@ai.wethinkcode.co.za" style="color:#bbb;text-decoration:none">ssibiya026m@ai.wethinkcode.co.za</a></li>
+        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" style="color:#bbb;text-decoration:none">WhatsApp</a></li>
+        <li>📸 <a href="https://www.instagram.com/mudes2026" target="_blank" style="color:#bbb;text-decoration:none">Instagram @mudes2026</a></li>
+        <li>🎵 <a href="https://www.tiktok.com/@sizwesibiya7" target="_blank" style="color:#bbb;text-decoration:none">Follow me on TikTok</a></li>
+        <li>👤 <a href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank" style="color:#bbb;text-decoration:none">Facebook</a></li>
+        <li>💼 <a href="https://github.com/Izzy-10" target="_blank" style="color:#bbb;text-decoration:none">GitHub Izzy-10</a></li>
       </ul>
     </div>
-
   </div>
 
-  <div style="border-top:1px solid #222; margin-top:50px; padding-top:20px; text-align:center; color:#666; font-size:0.8rem; line-height:1.6;">
-    © 2026 Sibiya AI. All rights reserved.<br>
-    Built by Sizwe Sicelimpilo Sibiya · Durban, South Africa · Based in Durban South Africa
+  <div style="border-top:1px solid #1a1a1a;margin-top:60px;padding-top:24px;text-align:center;color:#555;font-size:0.8rem;line-height:1.8">
+    © 2026 Sibiya AI. All rights reserved.<br>Built by Sizwe Sicelimpilo Sibiya · Durban, South Africa
   </div>
 </footer>
+
+</body>
+</html>
