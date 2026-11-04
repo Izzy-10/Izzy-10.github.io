@@ -4,42 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sizwe Sibiya — Frontend Developer | Durban SA</title>
-<meta name="description" content="Sizwe Sibiya - Frontend Developer from Jozini, based in Durban. Builder of Sibiya AI, KickOff Intelligence, DevMzansi.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,sans-serif}
-body{background:#0F0F0F;color:#fff;line-height:1.6}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:rgba(15,15,15,0.95);border-bottom:1px solid #222;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
-nav b{letter-spacing:4px;color:#fff}
-nav span{color:#D4A84B;font-size:0.85rem;letter-spacing:2px}
-.hero{padding:100px 6% 80px;background:radial-gradient(ellipse at top,#1e1e1e 0%,#0F0F0F 70%);text-align:center;border-bottom:1px solid #222;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#D4A84B,#FFD700,#D4A84B)}
-.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:8px;color:#D4A84B;font-weight:900;line-height:1.1}
-.hero h2{margin-top:12px;letter-spacing:6px;font-size:clamp(0.7rem,2vw,1rem);color:#fff;font-weight:400}
-.hero .tagline{margin-top:20px;color:#aaa;font-size:1.1rem}
-.badges{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.badges span{border:1px solid #333;padding:8px 18px;border-radius:999px;font-size:0.8rem;color:#aaa}
-.badges span.gold{border-color:#D4A84B;color:#D4A84B}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{background:#FFFEFB;color:#0F0F0F;line-height:1.6}
+:root{--gold:#D4A84B;--gold-foil:linear-gradient(180deg,#FFD700 0%,#FFC000 30%,#D4A84B 60%,#B8860B 100%);--black:#0F0F0F}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:rgba(255,254,251,0.9);border-bottom:1px solid #f0e6d3;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+nav b{letter-spacing:4px}
+nav span{color:var(--gold);font-size:0.85rem;letter-spacing:2px;font-weight:600}
+.hero{padding:110px 6% 90px;text-align:center;position:relative;background:
+radial-gradient(ellipse at top,rgba(212,168,75,0.12) 0%,transparent 60%),
+linear-gradient(rgba(255,254,251,0.85),rgba(255,254,251,0.92)), 
+url('https://images.unsplash.com/photo-1576485290814-1c72c0b5a0d6?q=80&w=2000') center/cover;
+border-bottom:2px solid var(--gold);overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:repeating-linear-gradient(90deg,var(--gold) 0 20px,#0F0F0F 20px 40px, #fff 40px 50px);opacity:0.15}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);letter-spacing:10px;font-weight:900;background:var(--gold-foil);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero h2{margin-top:14px;letter-spacing:7px;font-size:clamp(0.7rem,2vw,1.05rem);color:var(--black);font-weight:500}
+.hero .tagline{margin-top:20px;color:#666;font-size:1.1rem}
+.badges{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badges span{border:1px solid #e8d5a8;padding:9px 20px;border-radius:999px;font-size:0.85rem;background:#fff}
+.badges span.gold{background:var(--black);color:var(--gold);border-color:var(--black)}
 section{padding:70px 6%;max-width:1300px;margin:0 auto}
-.section-title{color:#D4A84B;letter-spacing:4px;font-size:0.8rem;margin-bottom:30px}
+.section-title{color:var(--gold);letter-spacing:4px;font-size:0.8rem;margin-bottom:30px;font-weight:700}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.card{background:#151515;border:1px solid #222;padding:32px;border-radius:20px;transition:all 0.3s}
-.card:hover{border-color:#D4A84B;transform:translateY(-4px)}
-.card h3{color:#fff;margin-bottom:10px;font-size:1.2rem}
-.card p{color:#888;font-size:0.95rem;line-height:1.6}
-.tech{margin-top:15px;display:flex;gap:8px;flex-wrap:wrap}
-.tech span{font-size:0.7rem;background:#222;color:#999;padding:4px 10px;border-radius:999px}
-.btn{display:inline-block;margin-top:18px;padding:11px 20px;background:#fff;color:#000;border-radius:999px;text-decoration:none;font-weight:600;font-size:0.85rem;transition:0.2s}
-.btn-gold{background:#D4A84B;color:#000}
-.btn:hover{opacity:0.8}
+.card{background:#fff;border:1px solid #f0e6d3;padding:32px;border-radius:20px;box-shadow:0 4px 20px rgba(212,168,75,0.08);transition:all 0.3s}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(212,168,75,0.18)}
+.card h3{margin-bottom:10px;font-size:1.2rem}
+.card p{color:#666;font-size:0.95rem}
+.tech{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.tech span{font-size:0.7rem;background:#FFFEFB;border:1px solid #f0e6d3;color:#8a6d2b;padding:4px 10px;border-radius:999px}
+.btn{display:inline-block;margin-top:18px;padding:11px 20px;background:var(--black);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:0.85rem}
+.btn-gold{background:var(--gold-foil);color:#000}
 .about{display:grid;grid-template-columns:1.2fr 0.8fr;gap:50px;align-items:center}
-@media(max-width:900px){.about{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr !important}.hero h1{letter-spacing:4px}}
-footer{background:#080808;border-top:1px solid #1a1a1a;padding:70px 6% 30px}
+footer{background:#0F0F0F;color:#fff;padding:70px 6% 30px;border-top:4px solid var(--gold)}
 .footer-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr 1fr;gap:50px}
-footer a:hover{color:#D4A84B !important}
+@media(max-width:900px){.about,.footer-grid{grid-template-columns:1fr}.hero h1{letter-spacing:5px}}
 </style>
 </head>
 <body>
-
 <nav><b>SIZWE SIBIYA</b><span>DURBAN, SA</span></nav>
 
 <section class="hero">
@@ -50,25 +51,24 @@ footer a:hover{color:#D4A84B !important}
 </section>
 
 <section>
-<div class="section-title">FEATURED PROJECTS</div>
+<div class="section-title">FEATURED PROJECTS — MY COLORS</div>
 <div class="grid">
 <div class="card">
 <h3>Sibiya AI — ChatGPT with a Zulu Heart</h3>
-<p>Solo + Group Chat. Tag @Sibiya in groups. Codes, translates isiZulu, writes CVs, built for Mzansi. 1000+ users.</p>
+<p>Solo + Group Chat. Tag @Sibiya in groups. Codes, translates isiZulu, writes CVs.</p>
 <div class="tech"><span>Next.js</span><span>AI SDK</span><span>Zulu NLP</span></div>
 <a class="btn btn-gold" href="https://sibiya-ai.vercel.app" target="_blank">Live App →</a>
-<a class="btn" href="https://github.com/Izzy-10" target="_blank" style="margin-left:8px;background:#222;color:#fff">GitHub</a>
 </div>
 <div class="card">
 <h3>KickOff Intelligence</h3>
-<p>AI football predictions & analytics powered by IBM Granite. Live scores, insights for fans.</p>
-<div class="tech"><span>IBM Granite</span><span>React</span><span>API</span></div>
+<p>AI football predictions powered by IBM Granite. Live scores & insights.</p>
+<div class="tech"><span>IBM Granite</span><span>React</span></div>
 <a class="btn" href="https://kick-off-intelligence.vercel.app" target="_blank">View →</a>
 </div>
 <div class="card">
 <h3>DevMzansi</h3>
-<p>Free community platform for young South African developers to learn, share, and grow together.</p>
-<div class="tech"><span>Community</span><span>Next.js</span><span>Education</span></div>
+<p>Free community for young SA devs to learn, share, and grow.</p>
+<div class="tech"><span>Community</span><span>Next.js</span></div>
 <a class="btn" href="https://dev-mzansi.vercel.app" target="_blank">View →</a>
 </div>
 </div>
@@ -77,32 +77,28 @@ footer a:hover{color:#D4A84B !important}
 <section id="about" class="about">
 <div>
 <div class="section-title">ABOUT ME</div>
-<h2 style="font-size:2.2rem;line-height:1.2;margin-bottom:20px">From Jozini to Durban.<br>Building for Mzansi.</h2>
-<p style="color:#aaa;margin-bottom:16px">I'm Sizwe Sicelimpilo Sibiya, a Frontend Developer studying at WeThinkCode_ Durban. I build products that feel local — rooted in Zulu culture, but world-class in execution.</p>
-<p style="color:#aaa">When I'm not coding, I'm building communities like DevMzansi or experimenting with AI that speaks our languages.</p>
+<h2 style="font-size:2.4rem;line-height:1.1;margin-bottom:20px">From Jozini to Durban.<br>Building for Mzansi.</h2>
+<p style="color:#555;margin-bottom:14px">I'm Sizwe Sicelimpilo Sibiya, Frontend Developer at WeThinkCode_ Durban. I build products that feel local — rooted in Zulu culture, with your gold foil brand, but world-class.</p>
 </div>
-<div style="background:#151515;border:1px solid #222;border-radius:20px;padding:30px">
-<p style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:12px">STACK</p>
-<p style="color:#fff">React / Next.js / TypeScript / Tailwind / Node / AI SDK / Git</p>
+<div style="background:#fff;border:1px solid #f0e6d3;border-radius:20px;padding:30px">
+<p style="color:var(--gold);letter-spacing:3px;font-size:0.75rem;margin-bottom:10px;font-weight:700">STACK</p>
+<p>React / Next.js / TypeScript / Tailwind / Node / AI</p>
 <br>
-<p style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:12px">CURRENTLY</p>
-<p style="color:#ccc">WeThinkCode_ Durban — Software Engineering</p>
+<p style="color:var(--gold);letter-spacing:3px;font-size:0.75rem;margin-bottom:10px;font-weight:700">BASED</p>
+<p>Durban, South Africa — Jozini roots</p>
 </div>
 </section>
 
-<!-- FOOTER YOU ASKED FOR -->
 <footer>
   <div class="footer-grid">
     <div>
       <h3 style="color:#D4A84B;letter-spacing:5px;font-size:1.5rem;margin-bottom:14px">SIBIYA AI</h3>
       <p style="color:#999;line-height:1.7;font-size:0.92rem">Made in South Africa, rooted in Zulu culture. Chat on your own or bring friends into a group.</p>
-      <p style="margin-top:16px;color:#ccc;font-size:0.9rem"><span style="display:inline-block;width:8px;height:8px;background:#22c55e;border-radius:50%;margin-right:8px"></span>Available for projects & collaborations</p>
       <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap">
-        <a href="#about" style="background:#D4A84B;color:#000;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:700;font-size:0.9rem">About me →</a>
+        <a href="#about" style="background:linear-gradient(180deg,#FFD700,#D4A84B);color:#000;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:700">About me →</a>
         <a href="https://sibiya-ai.vercel.app" target="_blank" style="border:1px solid #333;color:#ccc;padding:12px 24px;border-radius:999px;text-decoration:none;font-size:0.9rem">Share Sibiya AI</a>
       </div>
     </div>
-
     <div>
       <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:20px">PAGES</h4>
       <ul style="list-style:none;line-height:2.6">
@@ -110,27 +106,24 @@ footer a:hover{color:#D4A84B !important}
         <li><a href="https://sibiya-ai.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">Sibiya AI</a></li>
         <li><a href="https://kick-off-intelligence.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">KickOff Intelligence</a></li>
         <li><a href="https://dev-mzansi.vercel.app" target="_blank" style="color:#bbb;text-decoration:none">DevMzansi</a></li>
-        <li><a href="https://github.com/Izzy-10" target="_blank" style="color:#bbb;text-decoration:none">Portfolio & GitHub</a></li>
+        <li><a href="https://github.com/Izzy-10" target="_blank" style="color:#bbb;text-decoration:none">All Projects</a></li>
       </ul>
     </div>
-
     <div>
       <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:20px">CONNECT</h4>
       <ul style="list-style:none;line-height:2.6;font-size:0.95rem">
         <li>📧 <a href="mailto:ssibiya026m@ai.wethinkcode.co.za" style="color:#bbb;text-decoration:none">ssibiya026m@ai.wethinkcode.co.za</a></li>
-        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" style="color:#bbb;text-decoration:none">WhatsApp</a></li>
         <li>📸 <a href="https://www.instagram.com/mudes2026" target="_blank" style="color:#bbb;text-decoration:none">Instagram @mudes2026</a></li>
         <li>🎵 <a href="https://www.tiktok.com/@sizwesibiya7" target="_blank" style="color:#bbb;text-decoration:none">Follow me on TikTok</a></li>
         <li>👤 <a href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank" style="color:#bbb;text-decoration:none">Facebook</a></li>
         <li>💼 <a href="https://github.com/Izzy-10" target="_blank" style="color:#bbb;text-decoration:none">GitHub Izzy-10</a></li>
+        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" style="color:#bbb;text-decoration:none">WhatsApp</a></li>
       </ul>
     </div>
   </div>
-
-  <div style="border-top:1px solid #1a1a1a;margin-top:60px;padding-top:24px;text-align:center;color:#555;font-size:0.8rem;line-height:1.8">
-    © 2026 Sibiya AI. All rights reserved.<br>Built by Sizwe Sicelimpilo Sibiya · Durban, South Africa
+  <div style="border-top:1px solid #222;margin-top:60px;padding-top:24px;text-align:center;color:#666;font-size:0.8rem">
+    © 2026 Sizwe Sibiya. All rights reserved.<br>Durban, South Africa • Gold Foil • Zulu Pattern
   </div>
 </footer>
-
 </body>
 </html>
