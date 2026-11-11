@@ -1,87 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sizwe Sibiya — Frontend Developer | Durban SA</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
-body{background:#FFFEFB;color:#0F0F0F;line-height:1.6}
-:root{--gold:#D4A84B;--cream:#FFF8EB;--black:#0F0F0F}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:rgba(255,254,251,0.92);border-bottom:1px solid #f0e6d3;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
-.hero{position:relative;height:520px;display:flex;align-items:flex-end;justify-content:center;padding:0 6% 50px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.2) 60%,transparent 100%), url('./durban-banner.jpg') center 35%/cover no-repeat;border-bottom:4px solid var(--gold);text-align:center}
-.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:6px;font-weight:900;color:#E8C86A}
-.hero h2{letter-spacing:6px;font-size:0.95rem;color:#E8C86A;margin-top:8px}
-.hero p{color:#fff;margin-top:10px}
-section{padding:70px 6%;max-width:1300px;margin:0 auto}
-.section-title{color:var(--gold);letter-spacing:4px;font-size:0.8rem;margin-bottom:30px;font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.card{background:#fff;border:1px solid #f0e6d3;padding:32px;border-radius:20px;box-shadow:0 4px 20px rgba(212,168,75,0.08)}
-.btn{display:inline-block;margin-top:16px;padding:11px 20px;background:var(--black);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:0.85rem}
-.btn-gold{background:linear-gradient(180deg,#FFD700,#D4A84B);color:#000}
-/* CREAM FOOTER */
-footer{background:var(--cream);color:#0F0F0F;padding:70px 6% 30px;border-top:4px solid #D4A84B}
-.footer-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.2fr 0.8fr 1fr;gap:50px}
-footer a{color:#444;text-decoration:none}
-footer a:hover{color:var(--gold)}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr}.hero{height:420px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10251f">
+  <meta name="description" content="Sizwe Sibiya is a frontend developer in Durban, South Africa, building digital products with a community-first mindset.">
+  <title>Sizwe Sibiya — Frontend Developer in Durban, South Africa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17231e;
+      --muted: #64716a;
+      --paper: #f7f6f0;
+      --white: #fffefa;
+      --green: #163d30;
+      --green-light: #dce8df;
+      --lime: #c5e28b;
+      --line: #e5e6dc;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --display: 'Manrope', var(--sans);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #8caf54; outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -60px; left: 16px; z-index: 20; padding: 10px 14px; background: var(--white); color: var(--ink); }
+    .skip-link:focus { top: 12px; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247, 246, 240, .91); border-bottom: 1px solid rgba(23, 35, 30, .08); backdrop-filter: blur(14px); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-size: .9rem; font-weight: 800; letter-spacing: .06em; }
+    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--green); color: var(--lime); font-size: .8rem; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: .88rem; font-weight: 600; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links .nav-contact { padding: 10px 17px; border: 1px solid #cbd4c8; border-radius: 999px; color: var(--green); }
+    .hero { position: relative; overflow: hidden; min-height: 625px; display: flex; align-items: center; background: var(--green) url('banner.jpg') center 43% / cover no-repeat; isolation: isolate; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 28, 22, .94) 0%, rgba(10, 28, 22, .79) 48%, rgba(10, 28, 22, .25) 100%); }
+    .hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-items: center; gap: 70px; padding-block: 84px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; color: var(--lime); font-size: .75rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin-bottom: 20px; color: #fffefa; font-family: var(--display); font-size: clamp(3rem, 7.5vw, 6rem); font-weight: 700; letter-spacing: -.075em; line-height: .99; }
+    h1 span { color: var(--lime); font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -.065em; }
+    .hero-copy { max-width: 550px; margin-bottom: 30px; color: rgba(255, 254, 250, .79); font-size: clamp(1rem, 1.7vw, 1.14rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: .88rem; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--lime); color: var(--ink); }
+    .button-primary:hover { background: #d4ef9e; }
+    .button-quiet { border-color: rgba(255,255,255,.32); color: #fffefa; }
+    .button-quiet:hover { background: rgba(255,255,255,.1); }
+    .portrait-frame { position: relative; width: 240px; aspect-ratio: 4 / 5; justify-self: end; padding: 10px; border: 1px solid rgba(255,255,255,.35); border-radius: 130px 130px 22px 22px; transform: rotate(3deg); }
+    .portrait-frame img { width: 100%; height: 100%; display: block; border-radius: inherit; object-fit: cover; transform: rotate(-3deg); }
+    .portrait-note { position: absolute; right: -24px; bottom: 24px; padding: 10px 14px; border-radius: 8px; background: var(--white); color: var(--green); font-size: .74rem; font-weight: 700; transform: rotate(-3deg); box-shadow: 0 12px 30px rgba(0,0,0,.16); }
+    .intro-strip { border-bottom: 1px solid var(--line); background: var(--white); }
+    .intro-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 23px; }
+    .intro-inner p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .intro-inner strong { color: var(--green); }
+    .location { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: .82rem; font-weight: 700; }
+    .location::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #7a9a52; box-shadow: 0 0 0 4px #e8efdf; }
+    section { padding-block: 104px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 38px; }
+    .section-kicker { margin-bottom: 12px; color: #688151; font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-family: var(--display); font-size: clamp(2.1rem, 4vw, 3.4rem); letter-spacing: -.065em; line-height: 1.1; }
+    .section-heading > p { max-width: 390px; margin-bottom: 3px; color: var(--muted); font-size: .95rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project-card { display: flex; min-height: 340px; flex-direction: column; padding: 27px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .project-card:hover { transform: translateY(-5px); border-color: #c9d6c6; box-shadow: 0 20px 50px rgba(22,61,48,.09); }
+    .project-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 34px; }
+    .project-number { color: #8d978e; font-family: var(--display); font-size: .78rem; font-weight: 700; }
+    .project-icon { display: grid; width: 43px; height: 43px; place-items: center; border-radius: 13px; background: var(--green-light); color: var(--green); font-size: 1.05rem; }
+    .project-card h3 { margin-bottom: 10px; font-family: var(--display); font-size: 1.28rem; letter-spacing: -.04em; line-height: 1.25; }
+    .project-card p { margin-bottom: 25px; color: var(--muted); font-size: .9rem; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--green); text-decoration: none; font-size: .86rem; font-weight: 700; }
+    .project-link span { transition: transform .2s ease; }
+    .project-link:hover span { transform: translate(3px, -3px); }
+    .about { padding-top: 0; }
+    .about-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; padding: clamp(30px, 6vw, 68px); border-radius: 20px; background: #e9eee5; }
+    .about-panel h2 { max-width: 420px; }
+    .about-copy { align-self: center; color: #4f5d54; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy .about-lead { color: var(--ink); font-family: var(--serif); font-size: 1.35rem; line-height: 1.55; }
+    .contact { padding-top: 20px; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 35px; padding: clamp(32px, 6vw, 64px); border-radius: 20px; background: var(--green); color: var(--white); }
+    .contact-panel .section-kicker { color: var(--lime); }
+    .contact-panel h2 { max-width: 600px; }
+    .contact-panel p { margin: 14px 0 0; color: rgba(255,254,250,.72); }
+    .contact-panel .button { flex: 0 0 auto; }
+    footer { padding-block: 31px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .social-links a { color: var(--muted); font-size: .82rem; font-weight: 600; text-decoration: none; }
+    .social-links a:hover { color: var(--green); }
+    @media (max-width: 800px) {
+      .hero { min-height: 570px; }
+      .hero-inner { grid-template-columns: 1fr 190px; gap: 28px; }
+      .portrait-frame { width: 180px; }
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .project-card:last-child { grid-column: span 2; min-height: 290px; }
+      .about-panel { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 36px, 1120px); }
+      .nav { min-height: 66px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .78rem; }
+      .nav-links a:nth-child(2) { display: none; }
+      .nav-links .nav-contact { padding: 8px 12px; }
+      .hero { min-height: auto; background-position: 58% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(10,28,22,.92), rgba(10,28,22,.7)); }
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; padding-block: 70px 58px; }
+      h1 { font-size: clamp(3.15rem, 15vw, 5rem); }
+      .portrait-frame { width: 138px; aspect-ratio: 1; justify-self: start; margin-left: 8px; border-radius: 50%; }
+      .portrait-note { right: -52px; bottom: 6px; }
+      .intro-inner { align-items: flex-start; flex-direction: column; gap: 12px; padding-block: 18px; }
+      section { padding-block: 74px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 26px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card, .project-card:last-child { grid-column: auto; min-height: 290px; }
+      .project-top { margin-bottom: 26px; }
+      .about { padding-top: 0; }
+      .contact { padding-top: 0; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
 </head>
 <body>
-<nav><b>SIZWE SIBIYA</b><span style="color:#D4A84B;font-weight:700">DURBAN, SA</span></nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Sizwe Sibiya, home"><span class="brand-mark" aria-hidden="true">SS</span><span>SIZWE SIBIYA</span></a>
+      <div class="nav-links">
+        <a href="#work">Selected work</a>
+        <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
 
-<div class="hero">
-  <div>
-    <h1>SIZWE SIBIYA</h1>
-    <h2>BASED IN DURBAN SOUTH AFRICA</h2>
-    <p style="color:#fff">Frontend Developer • Builder • Community-First</p>
-  </div>
-</div>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <div>
+          <p class="eyebrow">Frontend developer · Durban, SA</p>
+          <h1 id="hero-title">Building for<br>people, <span>with purpose.</span></h1>
+          <p class="hero-copy">I’m Sizwe — a frontend developer and builder creating digital products rooted in community, culture, and the possibilities of technology.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Get in touch <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="portrait-frame">
+          <img src="profile.jpg" alt="Portrait of Sizwe Sibiya" width="240" height="300">
+          <span class="portrait-note">Proudly building in SA 🇿🇦</span>
+        </div>
+      </div>
+    </section>
 
-<section>
-<div class="section-title">FEATURED PROJECTS</div>
-<div class="grid">
-<div class="card"><h3>Sibiya AI — ChatGPT with a Zulu Heart</h3><p>Solo + Group Chat. Tag @Sibiya. Codes, isiZulu, CVs.</p><a class="btn btn-gold" href="https://sibiya-ai.vercel.app" target="_blank">Live App →</a></div>
-<div class="card"><h3>KickOff Intelligence</h3><p>AI football predictions powered by IBM Granite.</p><a class="btn" href="https://kick-off-intelligence.vercel.app" target="_blank">View →</a></div>
-<div class="card"><h3>DevMzansi</h3><p>Free community for young SA devs.</p><a class="btn" href="https://dev-mzansi.vercel.app" target="_blank">View →</a></div>
-</div>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div>
-      <h3 style="color:#0F0F0F;letter-spacing:5px;font-size:1.4rem;margin-bottom:14px">SIBIYA AI</h3>
-      <p style="color:#666;line-height:1.7;font-size:0.92rem">Made in South Africa, rooted in Zulu culture. Chat on your own or bring friends into a group.</p>
-      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-        <a href="#about" style="background:#0F0F0F;color:#D4A84B;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:700">About me →</a>
-        <a href="https://sibiya-ai.vercel.app" target="_blank" style="border:1px solid #e8d5a8;color:#444;padding:12px 24px;border-radius:999px;text-decoration:none">Share Sibiya AI</a>
+    <div class="intro-strip">
+      <div class="intro-inner wrap">
+        <p><strong>Good technology should feel human.</strong> That’s the idea behind everything I build.</p>
+        <span class="location">Durban, South Africa</span>
       </div>
     </div>
-    <div>
-      <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:18px">PAGES</h4>
-      <ul style="list-style:none;line-height:2.6">
-        <li><a href="/">Home</a></li>
-        <li><a href="https://sibiya-ai.vercel.app" target="_blank">Sibiya AI</a></li>
-        <li><a href="https://kick-off-intelligence.vercel.app" target="_blank">KickOff Intelligence</a></li>
-        <li><a href="https://dev-mzansi.vercel.app" target="_blank">DevMzansi</a></li>
-        <li><a href="https://github.com/Izzy-10" target="_blank">All Projects</a></li>
-      </ul>
+
+    <section id="work" class="wrap" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">A few things I’m building</p>
+          <h2 id="work-title">Selected work<span aria-hidden="true">.</span></h2>
+        </div>
+        <p>Experiments and products made to solve problems, bring people together, and make the internet feel a little closer to home.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">01 / AI & LANGUAGE</span><span class="project-icon" aria-hidden="true">✳</span></div>
+          <h3>Sibiya AI</h3>
+          <p>ChatGPT with a Zulu heart. A conversational AI experience for solo and group chats, with support for isiZulu, coding, and CVs.</p>
+          <a class="project-link" href="https://sibiya-ai.vercel.app" target="_blank" rel="noopener noreferrer">Explore Sibiya AI <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">02 / FOOTBALL & AI</span><span class="project-icon" aria-hidden="true">◎</span></div>
+          <h3>KickOff Intelligence</h3>
+          <p>An AI-powered football predictions project, built with IBM Granite.</p>
+          <a class="project-link" href="https://kick-off-intelligence.vercel.app" target="_blank" rel="noopener noreferrer">Explore KickOff <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-number">03 / COMMUNITY</span><span class="project-icon" aria-hidden="true">⌂</span></div>
+          <h3>DevMzansi</h3>
+          <p>A free community created to support and connect young developers across South Africa.</p>
+          <a class="project-link" href="https://dev-mzansi.vercel.app" target="_blank" rel="noopener noreferrer">Visit DevMzansi <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about wrap" id="about" aria-labelledby="about-title">
+      <div class="about-panel">
+        <div>
+          <p class="section-kicker">A little about me</p>
+          <h2 id="about-title">Local roots.<br>Big ideas.</h2>
+        </div>
+        <div class="about-copy">
+          <p class="about-lead">I’m a developer from Durban, South Africa, interested in building useful things that reflect the people and places they’re made for.</p>
+          <p>From exploring AI with a distinctly local voice to creating spaces for young developers to connect, I care about technology that opens doors and brings people together. I’m always learning, building, and looking for the next good problem to solve.</p>
+          <a class="project-link" href="https://github.com/Izzy-10" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+      <div class="contact-panel">
+        <div>
+          <p class="section-kicker">Have something in mind?</p>
+          <h2 id="contact-title">Let’s make something meaningful.</h2>
+          <p>Have an idea, opportunity, or just want to connect? My inbox is open.</p>
+        </div>
+        <a class="button button-primary" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Say hello <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <p>© 2026 Sizwe Sibiya · Made in Durban, South Africa</p>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://github.com/Izzy-10" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.instagram.com/mudes2026" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@sizwesibiya7" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
     </div>
-    <div>
-      <h4 style="color:#D4A84B;letter-spacing:3px;font-size:0.75rem;margin-bottom:18px">CONNECT</h4>
-      <ul style="list-style:none;line-height:2.6;font-size:0.92rem">
-        <li>📧 <a href="mailto:ssibiya026m@ai.wethinkcode.co.za">ssibiya026m@ai.wethinkcode.co.za</a></li>
-        <li>📸 <a href="https://www.instagram.com/mudes2026" target="_blank">Instagram @mudes2026</a></li>
-        <li>🎵 <a href="https://www.tiktok.com/@sizwesibiya7" target="_blank">Follow me on TikTok</a></li>
-        <li>👤 <a href="https://www.facebook.com/sizwe.sbiya.5439" target="_blank">Facebook</a></li>
-        <li>💼 <a href="https://github.com/Izzy-10" target="_blank">GitHub Izzy-10</a></li>
-        <li>📱 <a href="https://wa.me/qr/FZLHEACFAODGC1" target="_blank">WhatsApp</a></li>
-      </ul>
-    </div>
-  </div>
-  <div style="border-top:1px solid #f0e6d3;margin-top:50px;padding-top:20px;text-align:center;color:#999;font-size:0.8rem">
-    © 2026 Sizwe Sibiya. All rights reserved.<br>Durban, South Africa — Moses Mabhida — Soft Beige — Gold
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
