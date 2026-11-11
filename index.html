@@ -3,238 +3,713 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10251f">
-  <meta name="description" content="Sizwe Sibiya is a frontend developer in Durban, South Africa, building digital products with a community-first mindset.">
-  <title>Sizwe Sibiya — Frontend Developer in Durban, South Africa</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#122e27">
+  <meta name="description" content="Sizwe Sibiya is a frontend developer building digital products in Durban, South Africa.">
+  <title>Sizwe Sibiya | Developer, Builder, Storyteller</title>
   <style>
     :root {
-      color-scheme: light;
-      --ink: #17231e;
-      --muted: #64716a;
-      --paper: #f7f6f0;
-      --white: #fffefa;
-      --green: #163d30;
-      --green-light: #dce8df;
-      --lime: #c5e28b;
-      --line: #e5e6dc;
-      --serif: Georgia, 'Times New Roman', serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-      --display: 'Manrope', var(--sans);
+      --bg: #f5f1e9;
+      --bg-2: #f9f7f2;
+      --surface: rgba(255,255,255,0.82);
+      --surface-strong: #fffdf8;
+      --panel: #eef1ea;
+      --panel-strong: #e3e7de;
+      --text: #14251f;
+      --muted: #4f615c;
+      --line: rgba(20,37,31,0.12);
+      --primary: #173d34;
+      --primary-2: #7ea65e;
+      --accent: #d7b86d;
+      --accent-2: #f5d898;
+      --shadow: rgba(18, 30, 26, 0.14);
+      --hero-overlay: rgba(11, 25, 21, 0.72);
+      --button-text: #0f1a17;
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; }
-    a:focus-visible { outline: 3px solid #8caf54; outline-offset: 4px; border-radius: 4px; }
-    .skip-link { position: absolute; top: -60px; left: 16px; z-index: 20; padding: 10px 14px; background: var(--white); color: var(--ink); }
-    .skip-link:focus { top: 12px; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
-    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(247, 246, 240, .91); border-bottom: 1px solid rgba(23, 35, 30, .08); backdrop-filter: blur(14px); }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-size: .9rem; font-weight: 800; letter-spacing: .06em; }
-    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--green); color: var(--lime); font-size: .8rem; }
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: .88rem; font-weight: 600; transition: color .2s ease; }
-    .nav-links a:hover { color: var(--green); }
-    .nav-links .nav-contact { padding: 10px 17px; border: 1px solid #cbd4c8; border-radius: 999px; color: var(--green); }
-    .hero { position: relative; overflow: hidden; min-height: 625px; display: flex; align-items: center; background: var(--green) url('banner.jpg') center 43% / cover no-repeat; isolation: isolate; }
-    .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 28, 22, .94) 0%, rgba(10, 28, 22, .79) 48%, rgba(10, 28, 22, .25) 100%); }
-    .hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) 260px; align-items: center; gap: 70px; padding-block: 84px; }
-    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; color: var(--lime); font-size: .75rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
-    .eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+
+    body.theme-startup {
+      --bg: #eef6ff;
+      --bg-2: #f8fbff;
+      --surface: rgba(255,255,255,0.85);
+      --surface-strong: #ffffff;
+      --panel: #eaf1ff;
+      --panel-strong: #dfe9ff;
+      --text: #101a2b;
+      --muted: #46576d;
+      --line: rgba(16,26,43,0.1);
+      --primary: #11376c;
+      --primary-2: #48a4ff;
+      --accent: #d7ad3f;
+      --accent-2: #f0d77f;
+      --shadow: rgba(17,55,108,0.14);
+      --hero-overlay: rgba(11,19,32,0.7);
+      --button-text: #07111c;
+    }
+
+    body.theme-warm {
+      --bg: #f9f1e8;
+      --bg-2: #fffaf6;
+      --surface: rgba(255,249,244,0.86);
+      --surface-strong: #fffdfb;
+      --panel: #f4e6dc;
+      --panel-strong: #ecd5c6;
+      --text: #1d1a17;
+      --muted: #605651;
+      --line: rgba(29,26,23,0.11);
+      --primary: #4e2a1b;
+      --primary-2: #d3874c;
+      --accent: #af7d3c;
+      --accent-2: #efc06b;
+      --shadow: rgba(78,42,27,0.12);
+      --hero-overlay: rgba(39, 22, 12, 0.7);
+      --button-text: #1b120d;
+    }
+
+    body.theme-dark {
+      --bg: #0b1020;
+      --bg-2: #121b2d;
+      --surface: rgba(17,23,35,0.82);
+      --surface-strong: #101827;
+      --panel: #121d2e;
+      --panel-strong: #182538;
+      --text: #edf4ff;
+      --muted: #9aabc4;
+      --line: rgba(150,170,200,0.12);
+      --primary: #d8e7ff;
+      --primary-2: #67b6ff;
+      --accent: #dcb760;
+      --accent-2: #f7d97e;
+      --shadow: rgba(0,0,0,0.32);
+      --hero-overlay: rgba(7, 12, 20, 0.72);
+      --button-text: #07111d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      color: var(--text);
+      line-height: 1.65;
+      transition: background .3s ease, color .3s ease;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(245,241,233,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+    body.theme-startup .site-header { background: rgba(238,246,255,0.74); }
+    body.theme-warm .site-header { background: rgba(249,241,232,0.72); }
+    body.theme-dark .site-header { background: rgba(11,16,32,0.72); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 55%, var(--accent) 100%);
+      color: #fff;
+      font-size: 0.72rem;
+      box-shadow: 0 12px 30px rgba(17,55,108,0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.84rem;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .theme-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .theme-option {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .theme-option.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 18px rgba(19,33,41,0.18);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 660px;
+      display: grid;
+      align-items: center;
+      background: linear-gradient(90deg, var(--hero-overlay) 0%, rgba(0,0,0,0.18) 40%, rgba(0,0,0,0.12) 100%),
+                  url('banner.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.7fr;
+      align-items: center;
+      gap: 34px;
+      padding-block: 80px;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--accent-2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.73rem;
+      font-weight: 800;
+    }
+
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 760px; margin-bottom: 20px; color: #fffefa; font-family: var(--display); font-size: clamp(3rem, 7.5vw, 6rem); font-weight: 700; letter-spacing: -.075em; line-height: .99; }
-    h1 span { color: var(--lime); font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -.065em; }
-    .hero-copy { max-width: 550px; margin-bottom: 30px; color: rgba(255, 254, 250, .79); font-size: clamp(1rem, 1.7vw, 1.14rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: .88rem; font-weight: 700; transition: transform .2s ease, background .2s ease; }
+
+    .hero h1 {
+      margin-bottom: 18px;
+      color: #fffaf3;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-size: clamp(3.15rem, 7vw, 6.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.08em;
+      max-width: 720px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--accent-2);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+      margin-bottom: 28px;
+      color: rgba(255,255,255,0.85);
+      font-size: clamp(1rem, 1.7vw, 1.17rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 49px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+
     .button:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--lime); color: var(--ink); }
-    .button-primary:hover { background: #d4ef9e; }
-    .button-quiet { border-color: rgba(255,255,255,.32); color: #fffefa; }
-    .button-quiet:hover { background: rgba(255,255,255,.1); }
-    .portrait-frame { position: relative; width: 240px; aspect-ratio: 4 / 5; justify-self: end; padding: 10px; border: 1px solid rgba(255,255,255,.35); border-radius: 130px 130px 22px 22px; transform: rotate(3deg); }
-    .portrait-frame img { width: 100%; height: 100%; display: block; border-radius: inherit; object-fit: cover; transform: rotate(-3deg); }
-    .portrait-note { position: absolute; right: -24px; bottom: 24px; padding: 10px 14px; border-radius: 8px; background: var(--white); color: var(--green); font-size: .74rem; font-weight: 700; transform: rotate(-3deg); box-shadow: 0 12px 30px rgba(0,0,0,.16); }
-    .intro-strip { border-bottom: 1px solid var(--line); background: var(--white); }
-    .intro-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 23px; }
-    .intro-inner p { margin: 0; color: var(--muted); font-size: .9rem; }
-    .intro-inner strong { color: var(--green); }
-    .location { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: .82rem; font-weight: 700; }
-    .location::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #7a9a52; box-shadow: 0 0 0 4px #e8efdf; }
-    section { padding-block: 104px; }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 38px; }
-    .section-kicker { margin-bottom: 12px; color: #688151; font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-    h2 { margin-bottom: 0; font-family: var(--display); font-size: clamp(2.1rem, 4vw, 3.4rem); letter-spacing: -.065em; line-height: 1.1; }
-    .section-heading > p { max-width: 390px; margin-bottom: 3px; color: var(--muted); font-size: .95rem; }
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .project-card { display: flex; min-height: 340px; flex-direction: column; padding: 27px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .project-card:hover { transform: translateY(-5px); border-color: #c9d6c6; box-shadow: 0 20px 50px rgba(22,61,48,.09); }
-    .project-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 34px; }
-    .project-number { color: #8d978e; font-family: var(--display); font-size: .78rem; font-weight: 700; }
-    .project-icon { display: grid; width: 43px; height: 43px; place-items: center; border-radius: 13px; background: var(--green-light); color: var(--green); font-size: 1.05rem; }
-    .project-card h3 { margin-bottom: 10px; font-family: var(--display); font-size: 1.28rem; letter-spacing: -.04em; line-height: 1.25; }
-    .project-card p { margin-bottom: 25px; color: var(--muted); font-size: .9rem; }
-    .project-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--green); text-decoration: none; font-size: .86rem; font-weight: 700; }
-    .project-link span { transition: transform .2s ease; }
-    .project-link:hover span { transform: translate(3px, -3px); }
-    .about { padding-top: 0; }
-    .about-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; padding: clamp(30px, 6vw, 68px); border-radius: 20px; background: #e9eee5; }
-    .about-panel h2 { max-width: 420px; }
-    .about-copy { align-self: center; color: #4f5d54; }
-    .about-copy p:last-child { margin-bottom: 0; }
-    .about-copy .about-lead { color: var(--ink); font-family: var(--serif); font-size: 1.35rem; line-height: 1.55; }
-    .contact { padding-top: 20px; }
-    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 35px; padding: clamp(32px, 6vw, 64px); border-radius: 20px; background: var(--green); color: var(--white); }
-    .contact-panel .section-kicker { color: var(--lime); }
-    .contact-panel h2 { max-width: 600px; }
-    .contact-panel p { margin: 14px 0 0; color: rgba(255,254,250,.72); }
-    .contact-panel .button { flex: 0 0 auto; }
-    footer { padding-block: 31px; border-top: 1px solid var(--line); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-inner p { margin: 0; color: var(--muted); font-size: .8rem; }
-    .social-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .social-links a { color: var(--muted); font-size: .82rem; font-weight: 600; text-decoration: none; }
-    .social-links a:hover { color: var(--green); }
-    @media (max-width: 800px) {
-      .hero { min-height: 570px; }
-      .hero-inner { grid-template-columns: 1fr 190px; gap: 28px; }
-      .portrait-frame { width: 180px; }
-      .project-grid { grid-template-columns: 1fr 1fr; }
-      .project-card:last-child { grid-column: span 2; min-height: 290px; }
-      .about-panel { grid-template-columns: 1fr; gap: 24px; }
+
+    .button.primary {
+      color: var(--button-text);
+      background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.14);
     }
-    @media (max-width: 600px) {
-      .wrap { width: min(100% - 36px, 1120px); }
-      .nav { min-height: 66px; }
-      .nav-links { gap: 15px; }
-      .nav-links a { font-size: .78rem; }
-      .nav-links a:nth-child(2) { display: none; }
-      .nav-links .nav-contact { padding: 8px 12px; }
-      .hero { min-height: auto; background-position: 58% center; }
-      .hero::before { background: linear-gradient(90deg, rgba(10,28,22,.92), rgba(10,28,22,.7)); }
-      .hero-inner { grid-template-columns: 1fr; gap: 34px; padding-block: 70px 58px; }
-      h1 { font-size: clamp(3.15rem, 15vw, 5rem); }
-      .portrait-frame { width: 138px; aspect-ratio: 1; justify-self: start; margin-left: 8px; border-radius: 50%; }
-      .portrait-note { right: -52px; bottom: 6px; }
-      .intro-inner { align-items: flex-start; flex-direction: column; gap: 12px; padding-block: 18px; }
-      section { padding-block: 74px; }
-      .section-heading { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 26px; }
-      .project-grid { grid-template-columns: 1fr; }
-      .project-card, .project-card:last-child { grid-column: auto; min-height: 290px; }
-      .project-top { margin-bottom: 26px; }
-      .about { padding-top: 0; }
-      .contact { padding-top: 0; }
-      .contact-panel { align-items: flex-start; flex-direction: column; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+
+    .button.secondary {
+      color: #fffaf3;
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.28);
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+
+    .portrait-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: min(100%, 300px);
+      justify-self: end;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: 250px;
+      aspect-ratio: 4 / 5;
+      padding: 10px;
+      border-radius: 32px 32px 18px 18px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.26);
+      transform: rotate(4deg);
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px 24px 14px 14px;
+      transform: rotate(-3deg);
+    }
+
+    .floating-badge {
+      position: absolute;
+      right: -12px;
+      bottom: 24px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.9);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 800;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+    }
+
+    .intro-strip {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.28);
+    }
+
+    .intro-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 84px;
+    }
+
+    .intro-inner p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .intro-inner strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .location-pill::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--primary-2);
+      box-shadow: 0 0 0 5px rgba(126,166,94,0.15);
+    }
+
+    section {
+      padding-block: 100px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--primary-2);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-size: clamp(2.3rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.07em;
+    }
+
+    .section-sub {
+      max-width: 430px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin: 0;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+      padding: 26px 24px 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 18px 34px var(--shadow);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(126,166,94,0.35);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .project-number {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--primary);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .project-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.46rem;
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+    }
+
+    .project-card p {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
+    }
+
+    .project-link span {
+      transition: transform .2s ease;
+    }
+
+    .project-link:hover span {
+      transform: translate(4px, -2px);
+    }
+
+    .about-shell {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 50px;
+      padding: clamp(28px, 5vw, 60px);
+      background: linear-gradient(135deg, var(--panel) 0%, var(--panel-strong) 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 34px var(--shadow);
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .about-copy .lead {
+      margin-bottom: 16px;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: clamp(30px, 4vw, 54px);
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--primary) 0%, #09171b 100%);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 20px 40px rgba(9,23,27,0.12);
+    }
+
+    .contact-box .section-kicker { color: var(--accent-2); }
+    .contact-box p {
+      max-width: 640px;
+      margin: 12px 0 0;
+      color: rgba(255,255,255,0.76);
+    }
+
+    footer {
+      padding-block: 28px 40px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .socials a {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .portrait-wrap { justify-self: start; }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .about-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { min-height: 70px; }
+      .nav-links { gap: 10px; }
+      .theme-switcher { padding: 4px; }
+      .theme-option { padding: 7px 8px; }
+      .brand { letter-spacing: 0.05em; }
+      .hero { min-height: 560px; }
+      .hero-inner { padding-block: 72px; }
+      .projects { grid-template-columns: 1fr; }
+      .section-head, .contact-box, .footer-row, .intro-inner { flex-direction: column; align-items: flex-start; }
+      .contact-box .button { width: 100%; }
+      .hero-actions { width: 100%; }
+      .button { width: 100%; }
     }
   </style>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="theme-luxury">
   <header class="site-header">
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Sizwe Sibiya, home"><span class="brand-mark" aria-hidden="true">SS</span><span>SIZWE SIBIYA</span></a>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Sizwe Sibiya home">
+        <span class="brand-mark">SS</span>
+        <span>Sizwe Sibiya</span>
+      </a>
+
       <div class="nav-links">
-        <a href="#work">Selected work</a>
+        <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+        <a href="#contact">Contact</a>
+        <div class="theme-switcher" aria-label="Theme selector">
+          <button class="theme-option active" type="button" data-theme="theme-luxury">Luxury</button>
+          <button class="theme-option" type="button" data-theme="theme-startup">Startup</button>
+          <button class="theme-option" type="button" data-theme="theme-warm">Warm</button>
+          <button class="theme-option" type="button" data-theme="theme-dark">Dark</button>
+        </div>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main id="main">
+  <main>
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-inner wrap">
+      <div class="wrap hero-inner">
         <div>
-          <p class="eyebrow">Frontend developer · Durban, SA</p>
-          <h1 id="hero-title">Building for<br>people, <span>with purpose.</span></h1>
-          <p class="hero-copy">I’m Sizwe — a frontend developer and builder creating digital products rooted in community, culture, and the possibilities of technology.</p>
+          <p class="eyebrow">Frontend developer • Durban, South Africa</p>
+          <h1 id="hero-title">Building digital things with <span class="highlight">purpose</span>.</h1>
+          <p class="hero-copy">I’m Sizwe — a developer creating useful, human-centered products that feel local, thoughtful, and a little bit bold.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
-            <a class="button button-quiet" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Get in touch <span aria-hidden="true">↗</span></a>
+            <a class="button primary" href="#work">See my work</a>
+            <a class="button secondary" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Let’s talk</a>
           </div>
         </div>
-        <div class="portrait-frame">
-          <img src="profile.jpg" alt="Portrait of Sizwe Sibiya" width="240" height="300">
-          <span class="portrait-note">Proudly building in SA 🇿🇦</span>
+
+        <div class="portrait-wrap" aria-label="Portrait portrait of Sizwe Sibiya">
+          <div class="portrait-frame">
+            <img src="profile.jpg" alt="Portrait of Sizwe Sibiya" width="240" height="300">
+          </div>
+          <span class="floating-badge">Proudly building in SA 🇿🇦</span>
         </div>
       </div>
     </section>
 
     <div class="intro-strip">
-      <div class="intro-inner wrap">
-        <p><strong>Good technology should feel human.</strong> That’s the idea behind everything I build.</p>
-        <span class="location">Durban, South Africa</span>
+      <div class="wrap intro-inner">
+        <p><strong>Good technology should feel human.</strong> That is the foundation behind the products I build.</p>
+        <span class="location-pill">Durban, South Africa</span>
       </div>
     </div>
 
     <section id="work" class="wrap" aria-labelledby="work-title">
-      <div class="section-heading">
+      <div class="section-head">
         <div>
-          <p class="section-kicker">A few things I’m building</p>
-          <h2 id="work-title">Selected work<span aria-hidden="true">.</span></h2>
+          <p class="section-kicker">Selected work</p>
+          <h2 id="work-title">Things I’m building.</h2>
         </div>
-        <p>Experiments and products made to solve problems, bring people together, and make the internet feel a little closer to home.</p>
+        <p class="section-sub">From AI-powered experiences to community-driven ideas, I build products that combine utility, personality, and a strong sense of place.</p>
       </div>
-      <div class="project-grid">
+
+      <div class="projects">
         <article class="project-card">
-          <div class="project-top"><span class="project-number">01 / AI & LANGUAGE</span><span class="project-icon" aria-hidden="true">✳</span></div>
+          <div class="project-top">
+            <span class="project-number">01 / AI</span>
+            <span class="project-icon" aria-hidden="true">✦</span>
+          </div>
           <h3>Sibiya AI</h3>
-          <p>ChatGPT with a Zulu heart. A conversational AI experience for solo and group chats, with support for isiZulu, coding, and CVs.</p>
-          <a class="project-link" href="https://sibiya-ai.vercel.app" target="_blank" rel="noopener noreferrer">Explore Sibiya AI <span aria-hidden="true">↗</span></a>
+          <p>Chat-inspired AI with a Zulu heartbeat, built for solo or group conversations with coding, language, and CV support.</p>
+          <a class="project-link" href="https://sibiya-ai.vercel.app" target="_blank" rel="noopener noreferrer">Explore project <span aria-hidden="true">↗</span></a>
         </article>
+
         <article class="project-card">
-          <div class="project-top"><span class="project-number">02 / FOOTBALL & AI</span><span class="project-icon" aria-hidden="true">◎</span></div>
+          <div class="project-top">
+            <span class="project-number">02 / SPORTS</span>
+            <span class="project-icon" aria-hidden="true">◎</span>
+          </div>
           <h3>KickOff Intelligence</h3>
-          <p>An AI-powered football predictions project, built with IBM Granite.</p>
-          <a class="project-link" href="https://kick-off-intelligence.vercel.app" target="_blank" rel="noopener noreferrer">Explore KickOff <span aria-hidden="true">↗</span></a>
+          <p>Football prediction tooling with AI-driven insights, built with IBM Granite for smarter match analysis.</p>
+          <a class="project-link" href="https://kick-off-intelligence.vercel.app" target="_blank" rel="noopener noreferrer">See launch <span aria-hidden="true">↗</span></a>
         </article>
+
         <article class="project-card">
-          <div class="project-top"><span class="project-number">03 / COMMUNITY</span><span class="project-icon" aria-hidden="true">⌂</span></div>
+          <div class="project-top">
+            <span class="project-number">03 / COMMUNITY</span>
+            <span class="project-icon" aria-hidden="true">⌂</span>
+          </div>
           <h3>DevMzansi</h3>
-          <p>A free community created to support and connect young developers across South Africa.</p>
-          <a class="project-link" href="https://dev-mzansi.vercel.app" target="_blank" rel="noopener noreferrer">Visit DevMzansi <span aria-hidden="true">↗</span></a>
+          <p>A community platform helping young South African developers learn, connect, and grow together.</p>
+          <a class="project-link" href="https://dev-mzansi.vercel.app" target="_blank" rel="noopener noreferrer">Visit site <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
 
-    <section class="about wrap" id="about" aria-labelledby="about-title">
-      <div class="about-panel">
+    <section id="about" class="wrap" aria-labelledby="about-title">
+      <div class="about-shell">
         <div>
-          <p class="section-kicker">A little about me</p>
-          <h2 id="about-title">Local roots.<br>Big ideas.</h2>
+          <p class="section-kicker">About me</p>
+          <h2 id="about-title">Local roots. Big ideas.</h2>
         </div>
+
         <div class="about-copy">
-          <p class="about-lead">I’m a developer from Durban, South Africa, interested in building useful things that reflect the people and places they’re made for.</p>
-          <p>From exploring AI with a distinctly local voice to creating spaces for young developers to connect, I care about technology that opens doors and brings people together. I’m always learning, building, and looking for the next good problem to solve.</p>
-          <a class="project-link" href="https://github.com/Izzy-10" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">↗</span></a>
+          <p class="lead">I’m a frontend developer from Durban, South Africa, building practical digital experiences that feel grounded, accessible, and meaningful.</p>
+          <p>My work sits at the intersection of design, technology, and community. I care about creating products that make people feel seen, helping ideas become real, and building things that are useful beyond the screen.</p>
+          <a class="project-link" href="https://github.com/Izzy-10" target="_blank" rel="noopener noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="contact wrap" id="contact" aria-labelledby="contact-title">
-      <div class="contact-panel">
+    <section id="contact" class="wrap" aria-labelledby="contact-title">
+      <div class="contact-box">
         <div>
-          <p class="section-kicker">Have something in mind?</p>
-          <h2 id="contact-title">Let’s make something meaningful.</h2>
-          <p>Have an idea, opportunity, or just want to connect? My inbox is open.</p>
+          <p class="section-kicker">Let’s build</p>
+          <h2 id="contact-title">Need a thoughtful digital presence?</h2>
+          <p>I’m open to collaborations, product ideas, and opportunities to build something useful and beautiful.</p>
         </div>
-        <a class="button button-primary" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Say hello <span aria-hidden="true">↗</span></a>
+        <a class="button primary" href="mailto:ssibiya026m@ai.wethinkcode.co.za">Say hello</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner wrap">
-      <p>© 2026 Sizwe Sibiya · Made in Durban, South Africa</p>
-      <div class="social-links" aria-label="Social links">
+    <div class="wrap footer-row">
+      <p>© 2026 Sizwe Sibiya · Built in Durban, South Africa</p>
+      <div class="socials" aria-label="Social media links">
         <a href="https://github.com/Izzy-10" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.instagram.com/mudes2026" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://www.tiktok.com/@sizwesibiya7" target="_blank" rel="noopener noreferrer">TikTok</a>
@@ -242,5 +717,18 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.theme-option');
+    const body = document.body;
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const theme = button.dataset.theme;
+        body.className = theme;
+        buttons.forEach((btn) => btn.classList.toggle('active', btn === button));
+      });
+    });
+  </script>
 </body>
 </html>
